@@ -3,87 +3,87 @@
 // ---------------------------------------------
 // Appearance - Customizer Panel
 // ---------------------------------------------
-$wp_customize->add_panel( 'avenue_appearance_panel', array(
-    'title'                 => __( 'Appearance', 'avenue' ),
-    'description'           => __( 'Customize the appearance of your site', 'avenue' ),
+$wp_customize->add_panel( 'tyros_appearance_panel', array(
+    'title'                 => __( 'Appearance', 'tyros' ),
+    'description'           => __( 'Customize the appearance of your site', 'tyros' ),
     'priority'              => 10
 ) );
 
 // ---------------------------------------------
 // Colors Section
 // ---------------------------------------------
-$wp_customize->add_section( 'avenue_colors_section', array(
-    'title'                 => __( 'Skin Color', 'avenue'),
-    'description'           => __( 'Customize the colors of your site', 'avenue' ),
-    'panel'                 => 'avenue_appearance_panel'
+$wp_customize->add_section( 'tyros_colors_section', array(
+    'title'                 => __( 'Skin Color', 'tyros'),
+    'description'           => __( 'Customize the colors of your site', 'tyros' ),
+    'panel'                 => 'tyros_appearance_panel'
 ) );
 
     // Theme Color
-    $wp_customize->add_setting( 'avenue[sc_theme_color]', array(
-        'default'               => 'orange',
+    $wp_customize->add_setting( 'tyros[tyros_theme_color]', array(
+        'default'               => 'red',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_theme_color]', array(
-        'label'   => __( 'Select the theme skin color', 'avenue' ),
-        'section' => 'avenue_colors_section',
+    $wp_customize->add_control( 'tyros[tyros_theme_color]', array(
+        'label'   => __( 'Select the theme skin color', 'tyros' ),
+        'section' => 'tyros_colors_section',
         'type'    => 'radio',
         'choices'    => array(
-            'orange'      => __( 'Orange', 'avenue' ),
-            'green'     => __( 'Green', 'avenue' ),
-            'blue'       => __( 'Blue', 'avenue' ),
+            'red'      => __( 'Red', 'tyros' ),
+            'green'     => __( 'Green', 'tyros' ),
+            'violet'       => __( 'Violet', 'tyros' ),
         )
     ));
 
 // ---------------------------------------------
 // Fonts Section
 // ---------------------------------------------
-$wp_customize->add_section( 'avenue_fonts_section', array(
-    'title'                 => __( 'Fonts', 'avenue'),
-    'description'           => __( 'Customize the site\'s fonts', 'avenue' ),
-    'panel'                 => 'avenue_appearance_panel'
+$wp_customize->add_section( 'tyros_fonts_section', array(
+    'title'                 => __( 'Fonts', 'tyros'),
+    'description'           => __( 'Customize the site\'s fonts', 'tyros' ),
+    'panel'                 => 'tyros_appearance_panel'
 ) );
 
     // Primary Font Family
-    $wp_customize->add_setting( 'avenue[sc_font_family]', array(
+    $wp_customize->add_setting( 'tyros[tyros_font_family]', array(
         'default'               => 'Montserrat, sans-serif',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_font_family]', array(
-        'label'   => __( 'Select the primary font family (Headings)', 'avenue' ),
-        'section' => 'avenue_fonts_section',
+    $wp_customize->add_control( 'tyros[tyros_font_family]', array(
+        'label'   => __( 'Select the primary font family (Headings)', 'tyros' ),
+        'section' => 'tyros_fonts_section',
         'type'    => 'select',
-        'choices' => avenue_fonts()
+        'choices' => tyros_fonts()
     ));
 
     // Secondary Font Family
-    $wp_customize->add_setting( 'avenue[sc_font_family_secondary]', array(
+    $wp_customize->add_setting( 'tyros[tyros_font_family_secondary]', array(
         'default'               => 'Lato, sans-serif',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_font_family_secondary]', array(
-        'label'   => __( 'Select the secondary font family (Body)', 'avenue' ),
-        'section' => 'avenue_fonts_section',
+    $wp_customize->add_control( 'tyros[tyros_font_family_secondary]', array(
+        'label'   => __( 'Select the secondary font family (Body)', 'tyros' ),
+        'section' => 'tyros_fonts_section',
         'type'    => 'select',
-        'choices' => avenue_fonts()
+        'choices' => tyros_fonts()
     ));
     
     // Main Font Size
-    $wp_customize->add_setting( 'avenue[sc_font_size]', array (
+    $wp_customize->add_setting( 'tyros[tyros_font_size]', array (
         'default'               => 14,
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'avenue_sanitize_integer',
+        'sanitize_callback'     => 'tyros_sanitize_integer',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_font_size]', array(
+    $wp_customize->add_control( 'tyros[tyros_font_size]', array(
         'type'                  => 'number',
-        'section'               => 'avenue_fonts_section',
-        'label'                 => __( 'Body Font Size', 'avenue' ),
+        'section'               => 'tyros_fonts_section',
+        'label'                 => __( 'Body Font Size', 'tyros' ),
         'input_attrs'           => array(
             'min' => 10,
             'max' => 40,

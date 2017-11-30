@@ -3,60 +3,60 @@
 // ---------------------------------------------
 // Single Post Section
 // ---------------------------------------------
-$wp_customize->add_section( 'avenue_single_post_section', array(
-    'title'                 => __( 'Single Layout', 'avenue'),
-    'description'           => __( 'Customize the single templates for Posts/Pages', 'avenue' ),
+$wp_customize->add_section( 'tyros_single_post_section', array(
+    'title'                 => __( 'Single Layout', 'tyros'),
+    'description'           => __( 'Customize the single templates for Posts/Pages', 'tyros' ),
     'priority'              => 10
 ) );
 
     // Single Post Images
-    $wp_customize->add_setting( 'avenue[sc_single_featured]', array(
+    $wp_customize->add_setting( 'tyros[sc_single_featured]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'avenue_sanitize_on_off',
+        'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_single_featured]', array(
-        'label'   => __( 'Show or Hide the Post images on single posts?', 'avenue' ),
-        'section' => 'avenue_single_post_section',
+    $wp_customize->add_control( 'tyros[sc_single_featured]', array(
+        'label'   => __( 'Show or Hide the Post images on single posts?', 'tyros' ),
+        'section' => 'tyros_single_post_section',
         'type'    => 'radio',
         'choices'    => array(
-            'on'    => __( 'Show', 'avenue' ),
-            'off'   => __( 'Hide', 'avenue' ),
+            'on'    => __( 'Show', 'tyros' ),
+            'off'   => __( 'Hide', 'tyros' ),
         )
     ));
 
     // Single Post Dates
-    $wp_customize->add_setting( 'avenue[sc_single_date]', array(
+    $wp_customize->add_setting( 'tyros[sc_single_date]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'avenue_sanitize_on_off',
+        'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_single_date]', array(
-        'label'   => __( 'Show or Hide the Date on single posts?', 'avenue' ),
-        'section' => 'avenue_single_post_section',
+    $wp_customize->add_control( 'tyros[sc_single_date]', array(
+        'label'   => __( 'Show or Hide the Date on single posts?', 'tyros' ),
+        'section' => 'tyros_single_post_section',
         'type'    => 'radio',
         'choices'    => array(
-            'on'    => __( 'Show', 'avenue' ),
-            'off'   => __( 'Hide', 'avenue' ),
+            'on'    => __( 'Show', 'tyros' ),
+            'off'   => __( 'Hide', 'tyros' ),
         )
     ));
 
     // Single Post Author
-    $wp_customize->add_setting( 'avenue[sc_single_author]', array(
+    $wp_customize->add_setting( 'tyros[sc_single_author]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'avenue_sanitize_on_off',
+        'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'avenue[sc_single_author]', array(
-        'label'   => __( 'Show or Hide the Author on single posts?', 'avenue' ),
-        'section' => 'avenue_single_post_section',
+    $wp_customize->add_control( 'tyros[sc_single_author]', array(
+        'label'   => __( 'Show or Hide the Author on single posts?', 'tyros' ),
+        'section' => 'tyros_single_post_section',
         'type'    => 'radio',
         'choices'    => array(
-            'on'    => __( 'Show', 'avenue' ),
-            'off'   => __( 'Hide', 'avenue' ),
+            'on'    => __( 'Show', 'tyros' ),
+            'off'   => __( 'Hide', 'tyros' ),
         )
     ));
 
