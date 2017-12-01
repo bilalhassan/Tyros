@@ -707,8 +707,11 @@ article.sidebar-off{
     margin-top: 15px;
 }
 .page-content{
-    padding-top: 20px;
-    padding-bottom: 20px;
+/*    padding-top: 20px;
+    padding-bottom: 20px;*/
+}
+.page-content {
+    margin-top: 30px;
 }
 .page-title{
     background: #222222 url('../images/left-cross.png');
@@ -890,10 +893,10 @@ article.sidebar-off{
     padding-left: 5px;
 }
 .widget-title{
-    margin-bottom: 0;
-    font-weight: 400;
-    margin-top: 5px;
-    text-transform: uppercase;
+    margin-top: 0;
+    font-size: 26px;
+    line-height: normal;
+    margin-bottom: 10px;
 }
 .widget-area ul{
     margin: 0;
@@ -902,10 +905,8 @@ article.sidebar-off{
     list-style-type: none;
     padding-left: 0;
     border-bottom: 1px solid #E6E6E6;
-
 }
 .widget-area ul li a{
-    font-size: 16px;
     padding: 7px 0;
     transition: 0.2s all ease;
     -moz-transition: 0.2s all ease;

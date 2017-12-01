@@ -1,13 +1,13 @@
 <?php
 /*
- * Masonry Posts Template
+ * Alternate Masonry Posts Template
  * @author bilal hassan <info@smartcatdesign.net>
  * 
  */
 
 $tyros_options = tyros_get_options(); ?>
 
-<div class="blog-roll-item">
+<div class="blog-roll-item alternate-masonry">
 
     <article data-link="<?php echo esc_url( get_the_permalink( get_the_ID() ) ); ?>" id="post-<?php echo esc_attr( get_the_ID() ); ?>" <?php post_class(); ?>>
 
@@ -17,7 +17,7 @@ $tyros_options = tyros_get_options(); ?>
                 <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                     <?php the_post_thumbnail( 'large' ); ?>
                 </a>
-                <div class="clear"></div>
+                <div class="image-corner left"></div>
             </div>
             
         <?php endif; ?>
@@ -38,6 +38,8 @@ $tyros_options = tyros_get_options(); ?>
                 </h5>
             <?php endif; ?>
             
+            <hr>
+            
             <?php $words = isset( $tyros_options['alt_blog_word_trim'] ) ? $tyros_options['alt_blog_word_trim'] : 40; ?>
             
             <?php if ( $words > 0 ) : ?>
@@ -46,6 +48,8 @@ $tyros_options = tyros_get_options(); ?>
                 </div>
             <?php endif; ?>
 
+            
+            
             <?php if ( isset( $tyros_options['alt_blog_show_category'] ) && $tyros_options['alt_blog_show_category'] == 'on' ) : ?>  
                 <h6 class="post-category">
                     <?php $categories = get_the_category(); ?>

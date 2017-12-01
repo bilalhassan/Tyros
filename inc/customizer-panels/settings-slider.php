@@ -89,5 +89,31 @@ for ( $ctr = 1; $ctr < apply_filters( 'tyros_capacity', 1 ); $ctr++ ) :
             'section'               => 'tyros_slide_' . $ctr . '_section',
             'label'                 => __( 'Caption Subheading', 'tyros' ),
         ) );
+        
+        // Slide - Button
+        $wp_customize->add_setting( 'tyros[tyros_slide' . $ctr . '_button_text]', array(
+            'default'               => __( 'Click Here', 'tyros' ),
+            'transport'             => 'refresh',
+            'sanitize_callback'     => 'sanitize_text_field',
+            'type'                  => 'option'
+        ) );
+        $wp_customize->add_control( 'tyros[tyros_slide' . $ctr . '_button_text]', array(
+            'type'                  => 'text',
+            'section'               => 'tyros_slide_' . $ctr . '_section',
+            'label'                 => __( 'Button - Label', 'tyros' ),
+        ) );
+        
+        // Slide - Link/URL
+        $wp_customize->add_setting( 'tyros[tyros_slide' . $ctr . '_button_url]', array(
+            'default'               => '',
+            'transport'             => 'refresh',
+            'sanitize_callback'     => 'sanitize_text_field',
+            'type'                  => 'option'
+        ) );
+        $wp_customize->add_control( 'tyros[tyros_slide' . $ctr . '_button_url]', array(
+            'type'                  => 'text',
+            'section'               => 'tyros_slide_' . $ctr . '_section',
+            'label'                 => __( 'Button - Link/URL', 'tyros' ),
+        ) );
 
 endfor;

@@ -156,6 +156,23 @@ function tyros_sanitize_sidebar_off_on( $input ) {
 
 }
 
+function tyros_sanitize_blog_style( $input ) {
+
+    $valid_keys = array(
+        'carousel'      => __( 'Carousel', 'tyros' ),
+        'alternate'     => __( 'Alternate', 'tyros' ),
+        'masonry'       => __( 'Masonry - A', 'tyros' ),
+        'masonry2'      => __( 'Masonry - B', 'tyros' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
 function tyros_sanitize_icon( $input ) {
 
     $valid_keys = smk_font_awesome('readable');

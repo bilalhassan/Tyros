@@ -4,17 +4,24 @@
  * @author bilal hassan <info@smartcatdesign.net>
  * 
  */
+
+$tyros_options = tyros_get_options();
+
 ?>
 
 <div class="item-post carousel-blog-item">
     
-    <div class="post-thumb">
-        <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail( 'large' ); ?>
-        </a>
-    </div>
+    <?php if ( isset( $tyros_options['tyros_blog_featured'] ) && $tyros_options['tyros_blog_featured'] == 'on' && has_post_thumbnail() ) : ?>
     
-    <div class="clear"></div>
+        <div class="post-thumb">
+            <a href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail( 'large' ); ?>
+            </a>
+        </div>
+
+        <div class="clear"></div>
+    
+    <?php endif; ?>
     
     <div class="inner">
     

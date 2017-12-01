@@ -11,6 +11,7 @@ get_header();
 
 $tyros_options      = tyros_get_options();
 $alternate_blog     = isset( $tyros_options['blog_layout_style'] ) ? $tyros_options['blog_layout_style'] : 'carousel';
+$strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? true : false;
 
 ?>
 
@@ -40,11 +41,11 @@ $alternate_blog     = isset( $tyros_options['blog_layout_style'] ) ? $tyros_opti
                 
                     <?php if ( isset( $tyros_options['tyros_frontpage_content_bool'] ) && $tyros_options['tyros_frontpage_content_bool'] == 'yes' ) : ?>
         
-                        <?php if ( get_option( 'show_on_front' ) == 'posts' ) : ?>
+                        <?php if ( have_posts() ) : ?>
+                    
+                            <?php if ( get_option( 'show_on_front' ) == 'posts' ) : ?>
 
-                            <?php if ( $alternate_blog == 'masonry' && function_exists('tyros_strap_pl') && tyros_strap_pl() ) : ?>
-
-                                <div class="col-sm-12">
+                                <?php if ( $strap_check && ( $alternate_blog == 'masonry' || $alternate_blog == 'masonry2' ) ) : ?>
 
                                     <div id="tyros-alt-blog-wrap">
 
@@ -53,69 +54,75 @@ $alternate_blog     = isset( $tyros_options['blog_layout_style'] ) ? $tyros_opti
                                             <div class="grid-sizer"></div>
                                             <div class="gutter-sizer"></div>
 
-                            <?php elseif ( $alternate_blog == 'alternate' ) : ?>
+                                <?php elseif ( $alternate_blog == 'alternate' && $strap_check ) : ?>
 
-                                <div id="tyros-main-blog-wrap" class="row">
-                                    
-                            <?php else : ?>
-                                    
-                                <div id="tyros-carousel-blog-wrap" class="owl-carousel owl-theme">
+                                    <div id="tyros-main-blog-wrap" class="row">
+
+                                <?php else : ?>
+
+                                    <div id="tyros-carousel-blog-wrap" class="owl-carousel owl-theme">
+
+                                <?php endif; ?>
 
                             <?php endif; ?>
 
-                        <?php endif; ?>
-                                    
-                        <?php while ( have_posts() ) : the_post(); ?>
+                            <?php while ( have_posts() ) : the_post(); ?>
 
-                            <?php
+                                <?php
 
-                            if ( 'posts' == get_option( 'show_on_front' ) ) {
+                                if ( 'posts' == get_option( 'show_on_front' ) ) {
 
-                                if ( $alternate_blog == 'masonry' && function_exists('tyros_strap_pl') && tyros_strap_pl() ) { 
-                                    get_template_part('template-parts/content', 'posts-masonry' );
-                                } elseif ( $alternate_blog == 'alternate' ) {  
-                                    get_template_part('template-parts/content', 'posts-alt' );
+                                    if ( $alternate_blog == 'masonry' && $strap_check ) { 
+                                        get_template_part('template-parts/content', 'posts-masonry' );
+                                    } elseif ( $alternate_blog == 'masonry2' && $strap_check ) {  
+                                        get_template_part('template-parts/content', 'posts-masonry2' );
+                                    } elseif ( $alternate_blog == 'alternate' && $strap_check ) {  
+                                        get_template_part('template-parts/content', 'posts-alt' );
+                                    } else {
+                                        get_template_part('template-parts/content', 'posts' );
+                                    }
+
                                 } else {
-                                    get_template_part('template-parts/content', 'posts' );
-                                }
 
-                            } else {
-                                
-                                get_template_part('template-parts/content', 'home');
-                                
-                            }                
+                                    get_template_part('template-parts/content', 'home');
 
-                            // If comments are open or we have at least one comment, load up the comment template
-                            if (comments_open() || '0' != get_comments_number()) :
-                                comments_template();
-                            endif;
+                                }                
 
-                            ?>
+                                // If comments are open or we have at least one comment, load up the comment template
+                                if (comments_open() || '0' != get_comments_number()) :
+                                    comments_template();
+                                endif;
 
-                        <?php endwhile; // end of the loop.   ?>
-                    
-                        <?php if ( get_option( 'show_on_front' ) == 'posts' ) : ?>
+                                ?>
 
-                            <?php if ( $alternate_blog == 'masonry' && function_exists('tyros_strap_pl') && tyros_strap_pl() ) : ?>
+                            <?php endwhile; // end of the loop.   ?>
+
+                            <?php if ( get_option( 'show_on_front' ) == 'posts' ) : ?>
+
+                                <?php if ( $strap_check && ( $alternate_blog == 'masonry' || $alternate_blog == 'masonry2' ) ) : ?>
 
                                         </div>
 
                                     </div>
 
-                                </div>
+                                <?php else : ?>
 
-                            <?php else : ?>
-                                    
-                                </div>
+                                    </div>
+
+                                <?php endif; ?>
 
                             <?php endif; ?>
 
-                        <?php endif; ?>
-                                
-                        <div class="pagination-links">
-                            <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
-                        </div>
+                            <div class="pagination-links">
+                                <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                            </div>
 
+                        <?php else : ?>
+                                        
+                            <?php get_template_part('template-parts/content', 'none' ); ?>
+                                        
+                        <?php endif; ?>
+                                        
                     <?php endif; ?>
                 
                 </div>

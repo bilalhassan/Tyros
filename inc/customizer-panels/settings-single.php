@@ -10,13 +10,13 @@ $wp_customize->add_section( 'tyros_single_post_section', array(
 ) );
 
     // Single Post Images
-    $wp_customize->add_setting( 'tyros[sc_single_featured]', array(
+    $wp_customize->add_setting( 'tyros[tyros_single_featured]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'tyros[sc_single_featured]', array(
+    $wp_customize->add_control( 'tyros[tyros_single_featured]', array(
         'label'   => __( 'Show or Hide the Post images on single posts?', 'tyros' ),
         'section' => 'tyros_single_post_section',
         'type'    => 'radio',
@@ -27,13 +27,13 @@ $wp_customize->add_section( 'tyros_single_post_section', array(
     ));
 
     // Single Post Dates
-    $wp_customize->add_setting( 'tyros[sc_single_date]', array(
+    $wp_customize->add_setting( 'tyros[tyros_single_date]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'tyros[sc_single_date]', array(
+    $wp_customize->add_control( 'tyros[tyros_single_date]', array(
         'label'   => __( 'Show or Hide the Date on single posts?', 'tyros' ),
         'section' => 'tyros_single_post_section',
         'type'    => 'radio',
@@ -44,13 +44,13 @@ $wp_customize->add_section( 'tyros_single_post_section', array(
     ));
 
     // Single Post Author
-    $wp_customize->add_setting( 'tyros[sc_single_author]', array(
+    $wp_customize->add_setting( 'tyros[tyros_single_author]', array(
         'default'               => 'on',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'tyros_sanitize_on_off',
         'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'tyros[sc_single_author]', array(
+    $wp_customize->add_control( 'tyros[tyros_single_author]', array(
         'label'   => __( 'Show or Hide the Author on single posts?', 'tyros' ),
         'section' => 'tyros_single_post_section',
         'type'    => 'radio',

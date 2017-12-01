@@ -87,36 +87,50 @@ jQuery(document).ready(function ($) {
     });
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    //  Mobile Menu - bigSlide.js
+    //  Masonry Blog Layouts
     //__________________________________________________________________________
 
-//    function delayedSlide() {
-//        slideTimeoutID = window.setTimeout( initBigSlide, 200);
-//    }
-//
-//    function initBigSlide() {
-//        $( 'div#mobile-menu-wrap nav#menu' ).fadeIn();
-//        clearBigSlideTimeout();
-//    }
-//
-//    function clearBigSlideTimeout() {
-//        window.clearTimeout( slideTimeoutID );
-//    }
-//    
-//    delayedSlide();
-//
-//    $( '#mobile-menu-trigger, #mobile-menu-close, #mobile-overlay' ).bigSlide({
-//        menu: ( '#mobile-menu-wrap' ),
-//        side: 'left',
-//        afterOpen: function() {
-//            $('#mobile-overlay').stop().fadeIn();
-//            $('#mobile-menu-close').stop().fadeIn();
-//        },
-//        beforeClose: function() {
-//            $('#mobile-menu-close').stop().fadeOut();
-//            $('#mobile-overlay').stop().fadeOut();
-//        }
-//    });
+    function doMasonry() {
+
+        var $grid = $( "#masonry-blog-wrapper" ).imagesLoaded(function () {
+            $grid.masonry({
+                itemSelector: '.blog-roll-item',
+                columnWidth: '.grid-sizer',
+                percentPosition: true,
+                gutter: '.gutter-sizer',
+                transitionDuration: '.75s'
+            });
+        });
+        
+        if ( $( window ).width() >= 992 ) {  
+
+            $('#masonry-blog-wrapper .gutter-sizer').css('width', '2%');
+            $('#masonry-blog-wrapper .grid-sizer').css('width', '32%');
+            $('#masonry-blog-wrapper .blog-roll-item').css('width', '32%');
+
+        } else if ( $( window ).width() < 992 && $( window ).width() >= 768 ) {
+
+            $('#masonry-blog-wrapper .gutter-sizer').css('width', '2%');
+            $('#masonry-blog-wrapper .grid-sizer').css('width', '49%');
+            $('#masonry-blog-wrapper .blog-roll-item').css('width', '49%');
+
+        } else {
+
+            $('#masonry-blog-wrapper .gutter-sizer').css('width', '0%');
+            $('#masonry-blog-wrapper .grid-sizer').css('width', '100%');
+            $('#masonry-blog-wrapper .blog-roll-item').css('width', '100%');
+
+        }
+
+    }
+
+    /**
+    * Call Masonry on window resize and load
+    */
+    $( window ).resize( function() {
+        doMasonry();
+    });
+    doMasonry();
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     //  Mobile Menu Collapse/Expand

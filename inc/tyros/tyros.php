@@ -90,34 +90,86 @@ function tyros_widgets_init() {
     
     $tyros_options = tyros_get_options();
     
+    $homepage_a_widths = isset( $tyros_options['homepage_a_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_a_widget_widths'] : '12';
+//    $homepage_b_widths = isset( $tyros_options['homepage_b_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_b_widget_widths'] : '12';
+//    $homepage_c_widths = isset( $tyros_options['homepage_c_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_c_widget_widths'] : '12';
+    $above_page_widths = isset( $tyros_options['above_page_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['above_page_widths'] : '12';
+    $below_page_widths = isset( $tyros_options['below_page_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['below_page_widths'] : '12';
+    $above_post_widths = isset( $tyros_options['above_post_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['above_post_widths'] : '12';
+    $below_post_widths = isset( $tyros_options['below_post_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['below_post_widths'] : '12';
+    
     // Homepage A
     register_sidebar(array(
         'name' => __('Homepage Widget Area - A', 'tyros'),
         'id' => 'sidebar-banner',
         'description' => '',
-        'before_widget' => '<div class="col-sm-12"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_a_widths ) . '"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
         'after_widget' => '</aside></div>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
 
     // Homepage B
+//    register_sidebar(array(
+//        'name' => __('Homepage Widget Area - B', 'tyros'),
+//        'id' => 'sidebar-bannerb',
+//        'description' => '',
+//        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_b_widths ) . '"><div class="col-sm-6"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+//        'after_widget' => '</aside></div>',
+//        'before_title' => '<h2 class="widget-title">',
+//        'after_title' => '</h2>',
+//    ));
+
+    // Homepage C
+//    register_sidebar(array(
+//        'name' => __('Homepage Widget Area - C', 'tyros'),
+//        'id' => 'sidebar-bannerc',
+//        'description' => '',
+//        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_c_widths ) . '"><div class="col-sm-4"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+//        'after_widget' => '</aside></div>',
+//        'before_title' => '<h2 class="widget-title">',
+//        'after_title' => '</h2>',
+//    ));
+    
+    // Above Page  
     register_sidebar(array(
-        'name' => __('Homepage Widget Area - B', 'tyros'),
-        'id' => 'sidebar-bannerb',
+        'name' => __('Above Page Widget', 'tyros'),
+        'id' => 'sidebar-above-page',
         'description' => '',
-        'before_widget' => '<div class="col-sm-6"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $above_page_widths ) . '"><aside id="%1$s" class="widget %2$s">',
         'after_widget' => '</aside></div>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
-
-    // Homepage C
+    
+    // Below Page
     register_sidebar(array(
-        'name' => __('Homepage Widget Area - C', 'tyros'),
-        'id' => 'sidebar-bannerc',
+        'name' => __('Below Page Widget', 'tyros'),
+        'id' => 'sidebar-below-page',
         'description' => '',
-        'before_widget' => '<div class="col-sm-4"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $below_page_widths ) . '"><aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside></div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    
+    // Above Post
+    register_sidebar(array(
+        'name' => __('Above Post Widget', 'tyros'),
+        'id' => 'sidebar-above-post',
+        'description' => '',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $above_post_widths ) . '"><aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside></div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    
+    // Below Post
+    register_sidebar(array(
+        'name' => __('Below Post Widget', 'tyros'),
+        'id' => 'sidebar-below-post',
+        'description' => '',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $below_post_widths ) . '"><aside id="%1$s" class="widget %2$s">',
         'after_widget' => '</aside></div>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
@@ -571,7 +623,7 @@ function tyros_check_capacity( $base_value = 1 ) {
     if ( function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ) :
         return $base_value + 6;
     else:
-        return $base_value + 3;
+        return $base_value + 2;
     endif;
     
 }

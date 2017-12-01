@@ -4,22 +4,18 @@
 
         <div class="inner">
         
-            <div class="container">
+            <div class="row">
 
-                <div class="row">
+                <div class="col-md-12">
 
-                    <div class="col-md-12">
-
-                        <div class="top-banner-text">
-                            <?php dynamic_sidebar( 'sidebar-banner' ); ?>
-                        </div>
-
+                    <div class="top-banner-text">
+                        <?php dynamic_sidebar( 'sidebar-banner' ); ?>
                     </div>
 
                 </div>
 
             </div>
-            
+    
         </div>
 
     </div>

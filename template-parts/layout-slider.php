@@ -47,6 +47,22 @@
                                     </div>
                                 
                                 <?php endif; ?>
+                                
+                                <?php if ( isset( $tyros_options['tyros_slide' . $ctr . '_button_url'] ) && $tyros_options['tyros_slide' . $ctr . '_button_url'] != '' && isset( $tyros_options['tyros_slide' . $ctr . '_button_label'] ) && $tyros_options['tyros_slide' . $ctr . '_button_label'] != '' ) : ?>
+
+                                    <div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <a href="<?php echo esc_url( $tyros_options['tyros_slide' . $ctr . '_button_url'] ); ?>" class="fadeInUp animated tyros-button">
+                                                        <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_button_label'] ); ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <?php endif; ?>
 
                             </div>
 
