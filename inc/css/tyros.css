@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : zackmitchell
 */
 
+*:focus {
+    outline: none;
+}
+
 a, a:hover {
     text-decoration: none !important;
 }
@@ -219,6 +223,7 @@ header#masthead ul#primary-menu > li > a {
 
 div#site-cta-wrap {
     background-color: #fff;
+    overflow: hidden;
 }
 
 div#site-cta {
@@ -322,7 +327,7 @@ div#site-cta {
  */
 .pagination-links {
     text-align: center;
-    padding: 15px 0;
+    padding: 0 0;
 }
 
 .pagination-links .page-numbers,
@@ -355,6 +360,7 @@ div#post-slider-cta {
     color: #fff;
     padding: 50px 30% 50px 30px;
     position: relative;
+    overflow: hidden;
 }
 
 div#post-slider-cta .main-heading {
@@ -522,6 +528,7 @@ div#tyros-main-blog-wrap .item-post.text-left .post-title {
 
 div#masonry-blog-wrapper .blog-roll-item article {
     padding: 0;
+    margin-bottom: 15px;
 }
 
 div#masonry-blog-wrapper .blog-roll-item .inner {
@@ -627,4 +634,45 @@ body.page article,
 .single-post article {
     padding: 30px;
     margin-bottom: 15px;
+}
+
+
+/* Search Page */
+body.search .page-header {
+    background: #fff;
+    padding: 15px 30px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+body.search div#tyros-alt-blog-wrap {
+    margin-top: 0;
+}
+
+input.search-field {
+    height: 36px;
+    padding: 0px 15px;
+}
+
+@media (max-width:991px) {
+    body.search .page-header {
+        margin-bottom: 15px;
+    }
+}
+
+/* 404 Error Page */
+section.error-404.not-found {
+    background: #fff;
+    padding: 15px 30px;
+}
+
+section.error-404.not-found .page-header {
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+/* Comments */
+.comment-list {
+    margin-left: 0;
+    padding-left: 0;
 }

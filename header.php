@@ -24,9 +24,11 @@ $tyros_options = tyros_get_options();
     
 </head>
 
-<body <?php body_class(); ?>>
+<?php $bg_image_src = get_template_directory_uri() . '/inc/images/bg/' . esc_attr( $tyros_options['tyros_theme_background_pattern'] ) . '.png'; ?>
+
+<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( $bg_image_src ); ?>);">
     
-    <div id="page" class="site" style="background-image: url( <?php echo esc_url( get_template_directory_uri() . '/inc/images/bg/' . $tyros_options['tyros_theme_background_pattern'] . '.png' ); ?> );">
+    <div id="page" class="site">
         
 	<header id="masthead" class="site-header">
             

@@ -6,10 +6,11 @@
  */
 
 $tyros_options     = tyros_get_options();
-$is_alternate       = get_post_meta( get_the_ID(), 'tyros_layout_style', true ) && get_post_meta( get_the_ID(), 'tyros_layout_style', true ) == 'alternate' && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? true : false;  
-$sidebar_override   = get_post_meta( get_the_ID(), 'tyros_sidebar_location', true );
-if ( empty( $sidebar_override ) ) {
-    $sidebar_override = isset( $tyros_options['tyros_single_layout'] ) && $tyros_options['tyros_single_layout'] == 'col2r' ? 'right' : 'none';
+$above_sidebar      = get_post_meta( get_the_ID(), 'tyros_above_sidebar_toggle', true ) ? get_post_meta( get_the_ID(), 'tyros_above_sidebar_toggle', true ) : 'on';
+$below_sidebar      = get_post_meta( get_the_ID(), 'tyros_below_sidebar_toggle', true ) ? get_post_meta( get_the_ID(), 'tyros_below_sidebar_toggle', true ) : 'on';
+$right_sidebar      = get_post_meta( get_the_ID(), 'tyros_right_sidebar_toggle', true );
+if ( empty( $right_sidebar ) ) {
+    $right_sidebar = isset( $tyros_options['tyros_single_layout'] ) && $tyros_options['tyros_single_layout'] == 'col2r' ? 'on' : 'off';
 }
 
 get_header(); ?>
@@ -22,7 +23,7 @@ get_header(); ?>
     
             <?php while ( have_posts() ) : the_post(); ?>
     
-                <?php if ( is_active_sidebar( 'sidebar-above-page' ) ) : ?>
+                <?php if ( $above_sidebar == 'on' && is_active_sidebar( 'sidebar-above-post' ) ) : ?>
 
                     <div class="row">
                         
@@ -42,21 +43,13 @@ get_header(); ?>
             
                 <div class="page-content row">
                     
-                    <?php if ( ( $sidebar_override == 'left' || $sidebar_override == 'leftright' || $sidebar_override == 'default' ) && is_active_sidebar( 'sidebar-left' ) ) : ?>
-                    
-                        <div class="col-md-4 tyros-sidebar">
-                            <?php get_sidebar( 'left' ); ?>
-                        </div>
-                    
-                    <?php endif; ?>
-                    
-                    <div class="col-md-<?php echo esc_attr( tyros_main_width( $sidebar_override ) ); ?>">
+                    <div class="col-md-<?php echo $right_sidebar == 'on' && is_active_sidebar( 1 ) ? '8' : '12'; ?>">
                     
                         <?php get_template_part( 'template-parts/content', 'page' ); ?>
                         
                     </div>
 
-                    <?php if ( ( $sidebar_override == 'right' || $sidebar_override == 'leftright' || $sidebar_override == 'default' ) && is_active_sidebar( 1 ) ) : ?>
+                    <?php if ( $right_sidebar == 'on' && is_active_sidebar( 1 ) ) : ?>
 
                         <div class="col-md-4 tyros-sidebar">
                             <?php get_sidebar( '1' ); ?>
@@ -66,7 +59,7 @@ get_header(); ?>
 
                 </div>
                     
-                <?php if ( is_active_sidebar( 'sidebar-below-page' ) ) : ?>
+                <?php if ( $below_sidebar == 'on' && is_active_sidebar( 'sidebar-below-post' ) ) : ?>
 
                     <div class="row">
                         

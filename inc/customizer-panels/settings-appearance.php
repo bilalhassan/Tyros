@@ -37,6 +37,39 @@ $wp_customize->add_section( 'tyros_colors_section', array(
     ));
 
 // ---------------------------------------------
+// Background Pattern
+// ---------------------------------------------
+$wp_customize->add_section( 'tyros_pattern_section', array(
+    'title'                 => __( 'Background Pattern', 'tyros'),
+    'description'           => __( 'Customize the background pattern of your site', 'tyros' ),
+    'panel'                 => 'tyros_appearance_panel'
+) );
+
+    // Background Pattern
+    $wp_customize->add_setting( 'tyros[tyros_theme_background_pattern]', array(
+        'default'               => 'halftone',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'tyros[tyros_theme_background_pattern]', array(
+        'label'   => __( 'Select the theme background pattern', 'tyros' ),
+        'section' => 'tyros_pattern_section',
+        'type'    => 'radio',
+        'choices'    => array(
+            'brickwall'             => __( 'White Brick', 'tyros' ),
+            'confectionary'         => __( 'Confectionary', 'tyros' ),
+            'food'                  => __( 'Food', 'tyros' ),
+            'halftone'              => __( 'Beige Halftone', 'tyros' ),
+            'skulls'                => __( 'Illustrations', 'tyros' ),
+            'stardust'              => __( 'Dark Stardust', 'tyros' ),
+            'texturetastic_gray'    => __( 'Grey Texture', 'tyros' ),
+            'tweed'                 => __( 'Tweed', 'tyros' ),
+            'witewall_3'            => __( 'White Wall', 'tyros' ),
+        )
+    ));
+
+// ---------------------------------------------
 // Fonts Section
 // ---------------------------------------------
 $wp_customize->add_section( 'tyros_fonts_section', array(

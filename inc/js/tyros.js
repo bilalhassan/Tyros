@@ -171,16 +171,7 @@ jQuery(document).ready(function ($) {
     //  Initialize Wow.js
     //__________________________________________________________________________
 
-    var wow = new WOW(
-        {
-            offset: 150,
-            mobile: true,
-            live: true,
-            callback: function (box) {
-
-            }
-        }
-    );
+    var wow = new WOW();
     wow.init();
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯

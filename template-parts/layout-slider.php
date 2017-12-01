@@ -14,15 +14,15 @@
 
                         <div data-thumb="<?php echo esc_attr( $tyros_options['tyros_slide' . $ctr . '_image'] ); ?>" data-src="<?php echo esc_attr( $tyros_options['tyros_slide' . $ctr . '_image'] ); ?>">
 
-                            <div class="camera_caption fadeFromBottom">
+                            <div class="camera_caption">
 
                                 <?php if ( isset( $tyros_options['tyros_slide' . $ctr . '_text'] ) && $tyros_options['tyros_slide' . $ctr . '_text'] != '' ) : ?>
 
-                                    <div>
+                                    <div class="wow fadeInUp animate">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <span class="primary-caption animated fadeInLeft">
+                                                    <span class="primary-caption">
                                                         <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_text'] ); ?>
                                                     </span>
                                                 </div>
@@ -34,11 +34,11 @@
                                 
                                 <?php if ( isset( $tyros_options['tyros_slide' . $ctr . '_text2'] ) && $tyros_options['tyros_slide' . $ctr . '_text2'] != '' ) : ?>
 
-                                    <div>
+                                    <div class="wow fadeInUp animate">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <span class="secondary-caption fadeInUp animated">
+                                                    <span class="secondary-caption">
                                                         <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_text2'] ); ?>
                                                     </span>
                                                 </div>
@@ -54,7 +54,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <a href="<?php echo esc_url( $tyros_options['tyros_slide' . $ctr . '_button_url'] ); ?>" class="fadeInUp animated tyros-button">
+                                                    <a href="<?php echo esc_url( $tyros_options['tyros_slide' . $ctr . '_button_url'] ); ?>" class="fadeInUp wow animated tyros-button">
                                                         <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_button_label'] ); ?>
                                                     </a>
                                                 </div>

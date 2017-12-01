@@ -65,11 +65,6 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
                                     get_template_part('template-parts/content', 'posts-masonry' );
                                 }    
 
-                                // If comments are open or we have at least one comment, load up the comment template
-                                if (comments_open() || '0' != get_comments_number()) :
-                                    comments_template();
-                                endif;
-
                                 ?>
 
                             <?php endwhile; // end of the loop.   ?>

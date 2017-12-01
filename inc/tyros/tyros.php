@@ -340,7 +340,8 @@ function tyros_custom_css() {
         #main-heading,
         #site-cta .site-cta .fa.hover,
         #site-toolbar .social-bar a:hover,
-        div#post-slider-cta
+        div#post-slider-cta,
+        .btn, button, input[type="button"], input[type="reset"], input[type="submit"]
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -376,7 +377,11 @@ function tyros_custom_css() {
         .btn-primary:focus,
         .btn-primary:active,
         .btn-primary.active,
-        .open .dropdown-toggle.btn-primary
+        .open .dropdown-toggle.btn-primary,
+        .btn:hover,button:hover,
+        input[type="button"]:hover,
+        input[type="reset"]:hover,
+        input[type="submit"]:hover
         {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
@@ -686,7 +691,7 @@ class Tyros_Sidebar_Location_Meta_Box {
 
         add_meta_box( 
             'tyros_sidebar_location_meta_box', 
-            __( 'Sidebar Location', 'tyros' ), 
+            __( 'Sidebar Locations', 'tyros' ), 
             array ( $this, 'render_tyros_sidebar_location_meta_box' ), 
             array( 'page', 'post'), 
             'normal', 
@@ -701,27 +706,52 @@ class Tyros_Sidebar_Location_Meta_Box {
         wp_nonce_field( 'tyros_sidebar_location_meta_box_nonce_action', 'tyros_sidebar_location_meta_box_nonce' );
 
         // Retrieve an existing value from the database.
-        $tyros_sidebar_location    = get_post_meta( $post->ID, 'tyros_sidebar_location', true );
+        $tyros_above_sidebar_toggle    = get_post_meta( $post->ID, 'tyros_above_sidebar_toggle', true );
+        $tyros_below_sidebar_toggle    = get_post_meta( $post->ID, 'tyros_below_sidebar_toggle', true );
+        $tyros_right_sidebar_toggle    = get_post_meta( $post->ID, 'tyros_right_sidebar_toggle', true );
         	
         // Set default values.
-        if ( empty( $tyros_sidebar_location ) )    { $tyros_sidebar_location = 'right'; }
+        if ( empty( $tyros_above_sidebar_toggle ) )    { $tyros_above_sidebar_toggle = 'on'; }
+        if ( empty( $tyros_below_sidebar_toggle ) )    { $tyros_below_sidebar_toggle = 'on'; }
+        if ( empty( $tyros_right_sidebar_toggle ) )    { $tyros_right_sidebar_toggle = 'on'; }
         
         // Form fields
         
         echo '<table class="form-table">';
             
-        // Sidebar Setting
+        // Above
         echo '  <tr>';
-        echo '      <th><label for="tyros_sidebar_location" class="tyros_sidebar_location_label">' . __( 'Sidebar Location', 'tyros' ) . '</label></th>';
+        echo '      <th><label for="tyros_above_sidebar_toggle" class="tyros_above_sidebar_toggle_label">' . __( 'Sidebar  - Above Content', 'tyros' ) . '</label></th>';
         echo '      <td>';
-        echo '          <select id="tyros_sidebar_location" name="tyros_sidebar_location" class="tyros_sidebar_location_field">';
-        // echo '          <option value="default" ' . esc_attr( selected( $tyros_sidebar_location, 'default', false ) ) . '> ' . __( 'Default', 'tyros' ) . '</option>';
-        echo '          <option value="left" ' . esc_attr( selected( $tyros_sidebar_location, 'left', false ) ) . '> ' . __( 'Left Sidebar', 'tyros' ) . '</option>';
-        echo '          <option value="right" ' . esc_attr( selected( $tyros_sidebar_location, 'right', false ) ) . '> ' . __( 'Right Sidebar', 'tyros' ) . '</option>';
-        echo '          <option value="leftright" ' . esc_attr( selected( $tyros_sidebar_location, 'leftright', false ) ) . '> ' . __( 'Left + Right Sidebars', 'tyros' ) . '</option>';
-        echo '          <option value="none" ' . esc_attr( selected( $tyros_sidebar_location, 'none', false ) ) . '> ' . __( 'No Sidebar', 'tyros' ) . '</option>';
+        echo '          <select id="tyros_above_sidebar_toggle" name="tyros_above_sidebar_toggle" class="tyros_above_sidebar_toggle_field">';
+        echo '          <option value="on" ' . esc_attr( selected( $tyros_above_sidebar_toggle, 'on', false ) ) . '> ' . __( 'On', 'tyros' ) . '</option>';
+        echo '          <option value="off" ' . esc_attr( selected( $tyros_above_sidebar_toggle, 'off', false ) ) . '> ' . __( 'Off', 'tyros' ) . '</option>';
         echo '          </select>';
-        echo '          <p class="description">' . __( 'Do you want to display a sidebar on this post/page?', 'tyros' ) . '</p>';
+        echo '          <p class="description">' . __( 'Do you want to display a sidebar area above this post/page content?', 'tyros' ) . '</p>';
+        echo '      </td>';
+        echo '  </tr>';
+        
+        // Below
+        echo '  <tr>';
+        echo '      <th><label for="tyros_below_sidebar_toggle" class="tyros_below_sidebar_toggle_label">' . __( 'Sidebar  - Below Content', 'tyros' ) . '</label></th>';
+        echo '      <td>';
+        echo '          <select id="tyros_below_sidebar_toggle" name="tyros_below_sidebar_toggle" class="tyros_below_sidebar_toggle_field">';
+        echo '          <option value="on" ' . esc_attr( selected( $tyros_below_sidebar_toggle, 'on', false ) ) . '> ' . __( 'On', 'tyros' ) . '</option>';
+        echo '          <option value="off" ' . esc_attr( selected( $tyros_below_sidebar_toggle, 'off', false ) ) . '> ' . __( 'Off', 'tyros' ) . '</option>';
+        echo '          </select>';
+        echo '          <p class="description">' . __( 'Do you want to display a sidebar area below this post/page content?', 'tyros' ) . '</p>';
+        echo '      </td>';
+        echo '  </tr>';
+        
+        // Right
+        echo '  <tr>';
+        echo '      <th><label for="tyros_right_sidebar_toggle" class="tyros_right_sidebar_toggle_label">' . __( 'Right Sidebar', 'tyros' ) . '</label></th>';
+        echo '      <td>';
+        echo '          <select id="tyros_right_sidebar_toggle" name="tyros_right_sidebar_toggle" class="tyros_right_sidebar_toggle_field">';
+        echo '          <option value="on" ' . esc_attr( selected( $tyros_right_sidebar_toggle, 'on', false ) ) . '> ' . __( 'On', 'tyros' ) . '</option>';
+        echo '          <option value="off" ' . esc_attr( selected( $tyros_right_sidebar_toggle, 'off', false ) ) . '> ' . __( 'Off', 'tyros' ) . '</option>';
+        echo '          </select>';
+        echo '          <p class="description">' . __( 'Do you want to display a right sidebar area on this post/page?', 'tyros' ) . '</p>';
         echo '      </td>';
         echo '  </tr>';
 
@@ -740,10 +770,14 @@ class Tyros_Sidebar_Location_Meta_Box {
         if ( !wp_verify_nonce( $nonce_name, $nonce_action ) ) { return; }
             
         // Sanitize user input.
-        $tyros_sidebar_location  = isset( $_POST[ 'tyros_sidebar_location' ] ) ? sanitize_text_field( $_POST[ 'tyros_sidebar_location' ] ) : '';
+        $tyros_right_sidebar_toggle  = isset( $_POST[ 'tyros_right_sidebar_toggle' ] ) ? sanitize_text_field( $_POST[ 'tyros_right_sidebar_toggle' ] ) : '';
+        $tyros_above_sidebar_toggle  = isset( $_POST[ 'tyros_above_sidebar_toggle' ] ) ? sanitize_text_field( $_POST[ 'tyros_above_sidebar_toggle' ] ) : '';
+        $tyros_below_sidebar_toggle  = isset( $_POST[ 'tyros_below_sidebar_toggle' ] ) ? sanitize_text_field( $_POST[ 'tyros_below_sidebar_toggle' ] ) : '';
 		
         // Update the meta field in the database
-        update_post_meta( $post_id, 'tyros_sidebar_location', $tyros_sidebar_location );
+        update_post_meta( $post_id, 'tyros_right_sidebar_toggle', $tyros_right_sidebar_toggle );
+        update_post_meta( $post_id, 'tyros_above_sidebar_toggle', $tyros_above_sidebar_toggle );
+        update_post_meta( $post_id, 'tyros_below_sidebar_toggle', $tyros_below_sidebar_toggle );
         
     }
     

@@ -4,7 +4,7 @@
 
     <div id="site-cta" class="<?php echo $tyros_options['tyros_slider_bool'] == 'yes' ? '' : 'no-slider'; ?>"><!-- #CTA boxes -->
         
-        <div class="col-md-4 site-cta">
+        <div class="col-md-4 site-cta wow animated fadeInUp" data-wow-delay=".2s">
             
             <div class="center">
                 <i class="fa <?php echo esc_attr( $tyros_options['tyros_cta1_icon'] ); ?>"></i>
@@ -22,7 +22,7 @@
                 
         </div>
         
-        <div class="col-md-4 site-cta">
+        <div class="col-md-4 site-cta wow animated fadeInUp">
             
             <div class="center">
                 <i class="fa <?php echo esc_attr( $tyros_options['tyros_cta2_icon']); ?>"></i>
@@ -40,7 +40,7 @@
 
         </div>
 
-        <div class="col-md-4 site-cta">
+        <div class="col-md-4 site-cta wow animated fadeInUp" data-wow-delay=".2s">
             
             <div class="center">
                 <i class="fa <?php echo esc_attr( $tyros_options['tyros_cta3_icon'] ); ?>"></i>
