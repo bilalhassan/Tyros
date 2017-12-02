@@ -43,10 +43,18 @@ a.btn-primary,
     background: #fff;
 }
 
+div#tyros_slider_wrap {
+    margin-bottom: 0 !important;
+}
+
 @media (max-width:767px) {
     .boxed-wrap {
         padding-left: 0;
         padding-right: 0;
+    }
+    .row.boxed-wrap {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -286,6 +294,10 @@ div#site-cta {
     background: none;
 }
 
+.sc-slider-wrapper {
+    background-color: #f8f8f8;
+}
+
 .sc-slider-wrapper .camera_caption > div span {
     font-size: 50px;
     line-height: normal;
@@ -299,6 +311,7 @@ div#site-cta {
 }
 
 .sc-slider-wrapper .tyros-button {
+    background: none;
     color: #fff;
     border: 2px solid #fff;
     padding: 10px 30px;
@@ -308,6 +321,13 @@ div#site-cta {
     display: inline-block;
     margin: 15px 0 0 0;
     text-transform: none;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+}
+
+.sc-slider-wrapper .tyros-button:hover {
+    background: rgba(255,255,255,.2);
 }
 
 @media (max-width: 991px) {

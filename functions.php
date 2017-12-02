@@ -64,12 +64,6 @@ if ( ! function_exists( 'tyros_setup' ) ) :
             'caption',
         ) );
 
-        // Set up the WordPress core custom background feature.
-        add_theme_support( 'custom-background', apply_filters( 'tyros_custom_background_args', array(
-            'default-color' => 'ffffff',
-            'default-image' => '',
-        ) ) );
-
         // Add theme support for selective refresh for widgets.
         add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -118,11 +112,6 @@ function tyros_content_width() {
 add_action( 'after_setup_theme', 'tyros_content_width', 0 );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -145,13 +134,18 @@ require get_template_directory() . '/inc/font-awesome.php';
 /**
  * Load TGM
  */
-// require get_template_directory() . '/inc/tgm.php';
+ require get_template_directory() . '/inc/tgm.php';
 
 /**
  * Load the main custom theme functions file.
  */
 require get_template_directory() . '/inc/tyros/tyros.php';
 
+/**
+ * Retrieve options array.
+ * 
+ * @return type
+ */
 function tyros_get_options() {
     
     return get_option( 'tyros', array(
@@ -266,6 +260,9 @@ function tyros_get_options() {
     
 }
 
+/**
+ * Migration process - add missing defaults if updating
+ */
 function tyros_migration_process() {
     
     // Options array exists from a previous version, set defaults on newer Customizer options
