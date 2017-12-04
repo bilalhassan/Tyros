@@ -91,8 +91,7 @@ function tyros_widgets_init() {
     $tyros_options = tyros_get_options();
     
     $homepage_a_widths = isset( $tyros_options['homepage_a_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_a_widget_widths'] : '12';
-//    $homepage_b_widths = isset( $tyros_options['homepage_b_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_b_widget_widths'] : '12';
-//    $homepage_c_widths = isset( $tyros_options['homepage_c_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_c_widget_widths'] : '12';
+    $homepage_b_widths = isset( $tyros_options['homepage_b_widget_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['homepage_b_widget_widths'] : '12';
     $above_page_widths = isset( $tyros_options['above_page_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['above_page_widths'] : '12';
     $below_page_widths = isset( $tyros_options['below_page_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['below_page_widths'] : '12';
     $above_post_widths = isset( $tyros_options['above_post_widths'] ) && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? $tyros_options['above_post_widths'] : '12';
@@ -110,26 +109,15 @@ function tyros_widgets_init() {
     ));
 
     // Homepage B
-//    register_sidebar(array(
-//        'name' => __('Homepage Widget Area - B', 'tyros'),
-//        'id' => 'sidebar-bannerb',
-//        'description' => '',
-//        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_b_widths ) . '"><div class="col-sm-6"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
-//        'after_widget' => '</aside></div>',
-//        'before_title' => '<h2 class="widget-title">',
-//        'after_title' => '</h2>',
-//    ));
-
-    // Homepage C
-//    register_sidebar(array(
-//        'name' => __('Homepage Widget Area - C', 'tyros'),
-//        'id' => 'sidebar-bannerc',
-//        'description' => '',
-//        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_c_widths ) . '"><div class="col-sm-4"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
-//        'after_widget' => '</aside></div>',
-//        'before_title' => '<h2 class="widget-title">',
-//        'after_title' => '</h2>',
-//    ));
+    register_sidebar(array(
+        'name' => __('Homepage Widget Area - B', 'tyros'),
+        'id' => 'sidebar-bannerb',
+        'description' => '',
+        'before_widget' => '<div class="col-sm-' . esc_attr( $homepage_b_widths ) . '"><aside id="%1$s" class="widget %2$s animated wow fadeIn">',
+        'after_widget' => '</aside></div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
     
     // Above Page  
     register_sidebar(array(
@@ -171,17 +159,6 @@ function tyros_widgets_init() {
         'description' => '',
         'before_widget' => '<div class="col-sm-' . esc_attr( $below_post_widths ) . '"><aside id="%1$s" class="widget %2$s">',
         'after_widget' => '</aside></div>',
-        'before_title' => '<h2 class="widget-title">',
-        'after_title' => '</h2>',
-    ));
-
-    // Left Sidebar
-    register_sidebar(array(
-        'name' => __('Left Sidebar', 'tyros'),
-        'id' => 'sidebar-left',
-        'description' => '',
-        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        'after_widget' => '</aside>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
@@ -275,7 +252,8 @@ function tyros_custom_css() {
             font-family: <?php echo esc_attr( $tyros_options['tyros_font_family_secondary'] ); ?>;
         }
         
-        .secondary-font {
+        div#masonry-blog-wrapper .post-category,
+        div#masonry-blog-wrapper .post-meta  {
             font-family: <?php echo esc_attr( $tyros_options['tyros_font_family_secondary'] ); ?>;
         }
         
@@ -341,7 +319,8 @@ function tyros_custom_css() {
         #site-cta .site-cta .fa.hover,
         #site-toolbar .social-bar a:hover,
         div#post-slider-cta,
-        .btn, button, input[type="button"], input[type="reset"], input[type="submit"]
+        .btn, button, input[type="button"], input[type="reset"], input[type="submit"],
+        #homepage-area-b .top-banner-text
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -585,7 +564,7 @@ function tyros_get_theme_skin_colors() {
     
     $colors_array = array();
     
-    if ( isset( $tyros_options['tyros_use_custom_colors'] ) && $tyros_options['tyros_use_custom_colors'] == 'custom' ) :
+    if ( isset( $tyros_options['tyros_use_custom_colors'] ) && $tyros_options['tyros_use_custom_colors'] == 'custom' && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ) :
         
         $colors_array['primary'] = isset( $tyros_options['tyros_custom_primary'] ) ? $tyros_options['tyros_custom_primary'] : '#83CBDC';
         $colors_array['accent'] = isset( $tyros_options['tyros_custom_accent'] ) ? $tyros_options['tyros_custom_accent'] : '#57A9BD';
@@ -814,3 +793,8 @@ function tyros_is_homepage_sidebar_active( $homepage_id ) {
     }
     
 }
+
+function tyros_custom_excerpt_length( $length ) {
+   return 15;
+}
+add_filter( 'excerpt_length', 'tyros_custom_excerpt_length', 999 );

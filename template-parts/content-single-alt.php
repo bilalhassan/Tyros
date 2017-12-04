@@ -1,4 +1,4 @@
-<?php $avenue_options = avenue_get_options(); ?>
+<?php $tyros_options = tyros_get_options(); ?>
 
 <div id="alt-single-wrap">
 
@@ -9,11 +9,11 @@
         </h2>
         
         <div class="post-meta">
-            <?php echo $avenue_options['sc_single_date'] == 'on' ? __( 'Posted on: ', 'avenue' ) . esc_html( get_the_date() ) : ''; ?><?php echo $avenue_options['sc_single_author'] == 'on' && $avenue_options['sc_single_date'] == 'on' ? __( ', ', 'avenue' ) : ''; ?>
-            <?php echo $avenue_options['sc_single_author'] == 'on' ? __( 'by : ', 'avenue' ) . get_the_author_posts_link() : ''; ?>
+            <?php echo $tyros_options['tyros_single_date'] == 'on' ? __( 'Posted on: ', 'tyros' ) . esc_html( get_the_date() ) : ''; ?><?php echo $tyros_options['tyros_single_author'] == 'on' && $tyros_options['tyros_single_date'] == 'on' ? __( ', ', 'tyros' ) : ''; ?>
+            <?php echo $tyros_options['tyros_single_author'] == 'on' ? __( 'by : ', 'tyros' ) . get_the_author_posts_link() : ''; ?>
         </div>
 
-        <?php if ( has_post_thumbnail() && $avenue_options['sc_single_featured'] == 'on' ) : ?>
+        <?php if ( has_post_thumbnail() && $tyros_options['tyros_single_featured'] == 'on' ) : ?>
 
             <div class="featured-image">
 
@@ -30,7 +30,7 @@
             <?php 
 
             wp_link_pages(array(
-                'before' => '<div class="page-links">' . __( 'Pages:', 'avenue' ),
+                'before' => '<div class="page-links">' . __( 'Pages:', 'tyros' ),
                 'after' => '</div>',
             ));
 

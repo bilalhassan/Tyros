@@ -190,4 +190,23 @@ jQuery(document).ready(function ($) {
         $(this).removeClass('animated fadeInDown');
     });
     
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  Masonry Style 2 Hover
+    //__________________________________________________________________________
+    $( 'div#tyros-alt-blog-wrap.masonry2 article').mouseenter( function() {
+        
+        $( this ).find('.bottom-meta').stop().animate({
+            opacity: 1.0,
+            bottom: "0px",
+        }, 300 );
+        
+    }).mouseleave( function() {
+       
+        $( this ).find('.bottom-meta').stop().animate({
+            opacity: 0,
+            bottom: "-48px",
+        }, 200 );
+        
+    });
+    
 });

@@ -48,7 +48,7 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
 
                             <?php else : ?>
 
-                                <div id="tyros-alt-blog-wrap">
+                                <div id="tyros-alt-blog-wrap" class="<?php echo $alternate_blog == 'masonry2' && $strap_check ? 'masonry2' : ''; ?>">
 
                                     <div id="masonry-blog-wrapper">
 

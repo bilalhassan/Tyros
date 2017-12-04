@@ -204,7 +204,6 @@ function tyros_get_options() {
         // BLOG LAYOUT
         
         'tyros_blog_layout'                     => 'col2r',
-        'tyros_blog_layout_left'                => 'col1',                                                  // New
         'tyros_blog_featured'                   => 'on',
         
         // SLIDER
@@ -287,10 +286,6 @@ function tyros_migration_process() {
     
     if ( ! array_key_exists( 'tyros_post_slider_cta_bool', $existing_tyros_options ) ) :
         $existing_tyros_options['tyros_post_slider_cta_bool'] = 'yes';
-    endif; 
-
-    if ( ! array_key_exists( 'tyros_blog_layout_left', $existing_tyros_options ) ) :
-        $existing_tyros_options['tyros_blog_layout_left'] = 'col1';
     endif; 
 
     if ( ! array_key_exists( 'tyros_frontpage_content_bool', $existing_tyros_options ) ) :

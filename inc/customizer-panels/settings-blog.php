@@ -8,23 +8,6 @@ $wp_customize->add_section( 'tyros_blog_section', array(
     'description'           => __( 'Customize the Blog of your site', 'tyros' ),
     'priority'              => 10
 ) );
-
-    // Blog Layout - Include Left Sidebar?
-    $wp_customize->add_setting( 'tyros[tyros_blog_layout_left]', array(
-        'default'               => 'col1',
-        'transport'             => 'refresh',
-        'sanitize_callback'     => 'tyros_sanitize_col_sidebar_left',
-        'type'                  => 'option'
-    ) );
-    $wp_customize->add_control( 'tyros[tyros_blog_layout_left]', array(
-        'label'   => __( 'Include the left sidebar on the blog?', 'tyros' ),
-        'section' => 'tyros_blog_section',
-        'type'    => 'radio',
-        'choices'    => array(
-            'col1'      => __( 'No Sidebar', 'tyros' ),
-            'col2l'     => __( 'Left Sidebar', 'tyros' ),
-        )
-    ));
     
     // Blog Layout - Include Sidebar?
     $wp_customize->add_setting( 'tyros[tyros_blog_layout]', array(
