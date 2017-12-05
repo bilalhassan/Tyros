@@ -92,9 +92,15 @@ $tyros_options = tyros_get_options();
                                         </nav><!-- #site-navigation -->
 
                                     </div>
+                                    
+                                    <div id="slicknav-menu-toggle">
+
+                                        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/menu-bars-sqr.png' ); ?>"
+
+                                    </div>
 
                                 </div>
-
+                                
                             </div>
 
                         </div>

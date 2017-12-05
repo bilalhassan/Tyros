@@ -54,7 +54,11 @@ if ( $faqs->have_posts() ) : ?>
 
 <?php else : ?>
 
-    <h4 class="none-to-display"><?php _e( 'There are currently no FAQs, please check again at a later time.', 'tyros' ); ?></h4>
+    <div class="col-sm-12">
+
+        <h4 class="none-to-display"><?php _e( 'There are currently no FAQ items, please check again at a later time.', 'tyros' ); ?></h4>
+        
+    </div>
 
 <?php endif; ?>
     

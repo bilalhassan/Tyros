@@ -42,6 +42,7 @@ function tyros_scripts() {
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/css/bootstrap.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/inc/css/animate.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array(), TYROS_VERSION );
+    wp_enqueue_style( 'slicknav', get_template_directory_uri() . '/inc/css/slicknav.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'camera', get_template_directory_uri() . '/inc/css/camera.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/css/owl.carousel.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/inc/css/owl.theme.default.min.css', array(), TYROS_VERSION );
@@ -50,7 +51,7 @@ function tyros_scripts() {
 
     // Scripts
     wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/inc/js/jquery.easing.1.3.js', array('jquery'), TYROS_VERSION, true );
-//    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/inc/js/bootstrap.min.js', array('jquery'), TYROS_VERSION, true );
+    wp_enqueue_script( 'slicknav', get_template_directory_uri() . '/inc/js/jquery.slicknav.min.js', array('jquery'), TYROS_VERSION, true );
     wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/inc/js/owl.carousel.min.js', array('jquery'), TYROS_VERSION, true );
     wp_enqueue_script( 'sticky-js', get_template_directory_uri() . '/inc/js/jquery.sticky.js', array('jquery'), TYROS_VERSION, true );
     wp_enqueue_script( 'camera-js', get_template_directory_uri() . '/inc/js/camera.min.js', array('jquery'), TYROS_VERSION, true );
@@ -65,6 +66,7 @@ function tyros_scripts() {
         'navigation'        => isset( $tyros_options['tyros_slider_navigation'] ) ? $tyros_options['tyros_slider_navigation']   : 'on',
         'animation_speed'   => isset( $tyros_options['tyros_slider_trans_time'] ) ? $tyros_options['tyros_slider_trans_time']   : 2000,
         'hover'             => isset( $tyros_options['tyros_slider_hover'] )      ? $tyros_options['tyros_slider_hover']        : 'on',
+        'loader'            => isset( $tyros_options['tyros_loader_style'] )      ? $tyros_options['tyros_loader_style']        : 'pie',
     );
     
     // Pass each JS object to the custom script using wp_localize_script
@@ -304,7 +306,9 @@ function tyros_custom_css() {
         #site-cta .site-cta .fa,
         .feature-grid .fa,
         header#masthead div#primary-menu > ul > li:hover > a,
-        header#masthead ul#primary-menu > li:hover > a
+        header#masthead ul#primary-menu > li:hover > a,
+        .woocommerce .woocommerce-breadcrumb a,
+        .order-total .amount
         {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -320,9 +324,23 @@ function tyros_custom_css() {
         #site-toolbar .social-bar a:hover,
         div#post-slider-cta,
         .btn, button, input[type="button"], input[type="reset"], input[type="submit"],
-        #homepage-area-b .top-banner-text
+        #homepage-area-b .top-banner-text,
+        .woocommerce a.button.add_to_cart_button,
+        .woocommerce button.single_add_to_cart_button,
+        .widget.woocommerce a.button,
+        .woocommerce-cart .woocommerce a.button,
+        .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
+        .woocommerce span.onsale, .woocommerce-page span.onsale,
+        .wc-pagination ul span.page-numbers.current,
+        .pagination-links .page-numbers.current
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        
+        .woocommerce input[type="submit"].button,
+        .woocommerce a.checkout-button.button
+        {
+            background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         
         .sc-primary-border,
@@ -360,9 +378,23 @@ function tyros_custom_css() {
         .btn:hover,button:hover,
         input[type="button"]:hover,
         input[type="reset"]:hover,
-        input[type="submit"]:hover
+        input[type="submit"]:hover,
+        .woocommerce a.button.add_to_cart_button:hover,
+        .woocommerce button.single_add_to_cart_button:hover,
+        .widget.woocommerce a.button:hover,
+        .woocommerce-cart .woocommerce a.button:hover,
+        .woocommerce #respond input#submit.alt:hover, 
+        .woocommerce a.button.alt:hover, 
+        .woocommerce button.button.alt:hover, 
+        .woocommerce input.button.alt:hover
         {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
+        }
+        
+        .woocommerce input[type="submit"].button:hover,
+        .woocommerce a.checkout-button.button:hover
+        {
+            background: <?php echo esc_attr( $secondary_theme_color ); ?> !important;
         }
         
         .btn-primary:hover,
@@ -795,6 +827,7 @@ function tyros_is_homepage_sidebar_active( $homepage_id ) {
 }
 
 function tyros_custom_excerpt_length( $length ) {
-   return 15;
+    $tyros_options = tyros_get_options();
+    return isset( $tyros_options['excerpt_word_trim'] ) ? $tyros_options['excerpt_word_trim'] : 55;
 }
 add_filter( 'excerpt_length', 'tyros_custom_excerpt_length', 999 );

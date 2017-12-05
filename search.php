@@ -75,7 +75,9 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
                             
                             <?php if ( $strap_check && ( $alternate_blog == 'carousel' || $alternate_blog == 'alternate' ) ) : ?>
 
-                                </div>        
+                                </div>  
+                                
+                                <div class="clear"></div>
 
                             <?php else : ?>
 
@@ -85,9 +87,13 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
 
                             <?php endif; ?>
 
-                            <div class="pagination-links">
-                                <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
-                            </div>
+                            <?php if ( $alternate_blog != 'carousel' || !$strap_check ) : ?>
+
+                                <div class="pagination-links">
+                                    <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                                </div>
+
+                            <?php endif; ?>
                                         
                         </div>
                         

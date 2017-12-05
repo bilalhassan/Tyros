@@ -1,4 +1,9 @@
 jQuery(document).ready(function ($) {
+
+    $('ul#primary-menu').slicknav({
+        appendTo: '#site-branding-sticky-wrap',
+        allowParentLinks: true,
+    }); 
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     //  Camera Slider
@@ -20,7 +25,7 @@ jQuery(document).ready(function ($) {
             thumbnails: false,
             overlayer: true,
             playPause : false,
-            loader: 'pie',
+            loader: tyrosSlider.loader.toString(),
             onLoaded: function() {
                 if ( ! overlayer_active ) {
                     $('.camera_overlayer').animate({
@@ -193,19 +198,47 @@ jQuery(document).ready(function ($) {
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     //  Masonry Style 2 Hover
     //__________________________________________________________________________
-    $( 'div#tyros-alt-blog-wrap.masonry2 article').mouseenter( function() {
+
+    //    $( 'div#tyros-alt-blog-wrap.masonry2 article').mouseenter( function() {
+    //        
+    //        $( this ).find('.bottom-meta').stop().animate({
+    //            opacity: 1.0,
+    //            bottom: "0px",
+    //        }, 300 );
+    //        
+    //    }).mouseleave( function() {
+    //       
+    //        $( this ).find('.bottom-meta').stop().animate({
+    //            opacity: 0,
+    //            bottom: "-48px",
+    //        }, 200 );
+    //        
+    //    });
+    
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  SlickNav Mobile Menu
+    //__________________________________________________________________________
+    
+    var slicknav_open = false;
+    $( "#slicknav-menu-toggle" ).click( function() {
         
-        $( this ).find('.bottom-meta').stop().animate({
-            opacity: 1.0,
-            bottom: "0px",
-        }, 300 );
-        
-    }).mouseleave( function() {
-       
-        $( this ).find('.bottom-meta').stop().animate({
-            opacity: 0,
-            bottom: "-48px",
-        }, 200 );
+        if ( slicknav_open ) {
+            
+            $("div.slicknav_menu").stop().animate({
+                borderColor: "#fff"
+            }, 500 );
+            $('ul#primary-menu').slicknav( 'toggle' );
+            slicknav_open = false;
+            
+        } else {
+            
+            $("div.slicknav_menu").stop().animate({
+                borderColor: "#cacaca"
+            }, 1000 );
+            $('ul#primary-menu').slicknav( 'toggle' );
+            slicknav_open = true;
+            
+        }
         
     });
     

@@ -79,6 +79,11 @@ if ( ! function_exists( 'tyros_setup' ) ) :
             'flex-height' => true,
         ) );
         
+        add_theme_support( 'woocommerce' );
+        add_theme_support( 'wc-product-gallery-zoom' );
+        add_theme_support( 'wc-product-gallery-lightbox' );
+        add_theme_support( 'wc-product-gallery-slider' );
+        
         if( ! get_option( 'tyros' ) ) :
             
             // Options array does not exist from a previous version

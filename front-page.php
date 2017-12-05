@@ -88,11 +88,6 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
 
                                 }                
 
-                                // If comments are open or we have at least one comment, load up the comment template
-                                if (comments_open() || '0' != get_comments_number()) :
-                                    comments_template();
-                                endif;
-
                                 ?>
 
                             <?php endwhile; // end of the loop.   ?>
@@ -108,14 +103,20 @@ $strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? 
                                 <?php else : ?>
 
                                     </div>
+                                        
+                                    <div class="clear"></div>
 
                                 <?php endif; ?>
 
-                            <?php endif; ?>
+                                <?php if ( $alternate_blog != 'carousel' && $strap_check ) : ?>
+                                    
+                                    <div class="pagination-links">
+                                        <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                                    </div>
 
-                            <div class="pagination-links">
-                                <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
-                            </div>
+                                <?php endif; ?>
+                                    
+                            <?php endif; ?>
 
                         <?php else : ?>
                                         
