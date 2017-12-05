@@ -806,6 +806,7 @@ body.page article,
 
 
 /* Search Page */
+body.archive .page-header,
 body.search .page-header {
     background: #fff;
     padding: 15px 30px;
@@ -813,6 +814,7 @@ body.search .page-header {
     margin-bottom: 30px;
 }
 
+body.archive div#tyros-alt-blog-wrap,
 body.search div#tyros-alt-blog-wrap {
     margin-top: 0;
 }
@@ -823,6 +825,7 @@ input.search-field {
 }
 
 @media (max-width:991px) {
+    body.archive .page-header,
     body.search .page-header {
         margin-bottom: 15px;
     }

@@ -7,45 +7,119 @@
  * @package Tyros
  */
 
-get_header(); ?>
+get_header(); 
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+$tyros_options      = tyros_get_options();
+$alternate_blog     = isset( $tyros_options['index_blog_layout_style'] ) ? $tyros_options['index_blog_layout_style'] : 'masonry'; 
+$strap_check        = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? true : false;
 
-		<?php
-		if ( have_posts() ) : ?>
+?>
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+<div id="primary" class="content-area">
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+    <main id="main" class="site-main">
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+        <div class="container">
 
-			endwhile;
+            <div class="page-content row">
 
-			the_posts_navigation();
+                <?php if ( have_posts() ) : ?>
 
-		else :
+                    <div class="col-md-12">
 
-			get_template_part( 'template-parts/content', 'none' );
+                        <header class="page-header">
+                            <?php
+                                the_archive_title( '<h1 class="">', '</h1>' );
+                                the_archive_description( '<div class="archive-description">', '</div>' );
+                            ?>
+                        </header><!-- .page-header -->
 
-		endif; ?>
+                    </div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+                    <div class="col-md-<?php echo is_active_sidebar( 1 ) ? '8' : '12'; ?>">
+
+                        <?php if ( $alternate_blog == 'carousel' && $strap_check ) : ?>
+
+                            <div id="tyros-carousel-blog-wrap" class="owl-carousel owl-theme">
+
+                        <?php elseif ( $alternate_blog == 'alternate' && $strap_check ) : ?>
+
+                            <div id="tyros-main-blog-wrap" class="row">
+
+                        <?php else : ?>
+
+                            <div id="tyros-alt-blog-wrap" class="<?php echo $alternate_blog == 'masonry2' && $strap_check ? 'masonry2' : ''; ?>">
+
+                                <div id="masonry-blog-wrapper">
+
+                                    <div class="grid-sizer"></div>
+                                    <div class="gutter-sizer"></div>
+
+                        <?php endif; ?>
+
+                            <?php while ( have_posts() ) : the_post(); ?>
+
+                                <?php
+
+                                if ( $alternate_blog == 'carousel' && $strap_check ) { 
+                                    get_template_part('template-parts/content', 'posts' );
+                                } elseif ( $alternate_blog == 'alternate' && $strap_check ) {  
+                                    get_template_part('template-parts/content', 'posts-alt' );
+                                } elseif ( $alternate_blog == 'masonry2' && $strap_check ) {  
+                                    get_template_part('template-parts/content', 'posts-masonry2' );
+                                } else {
+                                    get_template_part('template-parts/content', 'posts-masonry' );
+                                }    
+
+                                ?>
+
+                            <?php endwhile; // end of the loop.   ?>
+
+                        <?php if ( $strap_check && ( $alternate_blog == 'carousel' || $alternate_blog == 'alternate' ) ) : ?>
+
+                            </div>        
+
+                            <div class="clear"></div>
+
+                        <?php else : ?>
+
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if ( $alternate_blog != 'carousel' || !$strap_check ) : ?>
+
+                            <div class="pagination-links">
+                                <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                            </div>
+
+                        <?php endif; ?>
+                                
+                    </div>
+
+                    <?php if ( is_active_sidebar( 1 ) ) : ?>
+
+                        <div class="col-md-4 tyros-sidebar">
+                            <?php get_sidebar( '1' ); ?>
+                        </div>
+
+                    <?php endif; ?>
+                        
+                <?php else : ?>
+
+                    <?php get_template_part('template-parts/content', 'none' ); ?>
+
+                <?php endif; ?>
+
+            </div>
+
+        </div>
+
+    </main><!-- #main -->
+
+</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

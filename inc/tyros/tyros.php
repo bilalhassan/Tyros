@@ -598,8 +598,8 @@ function tyros_get_theme_skin_colors() {
     
     if ( isset( $tyros_options['tyros_use_custom_colors'] ) && $tyros_options['tyros_use_custom_colors'] == 'custom' && function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ) :
         
-        $colors_array['primary'] = isset( $tyros_options['tyros_custom_primary'] ) ? $tyros_options['tyros_custom_primary'] : '#83CBDC';
-        $colors_array['accent'] = isset( $tyros_options['tyros_custom_accent'] ) ? $tyros_options['tyros_custom_accent'] : '#57A9BD';
+        $colors_array['primary'] = isset( $tyros_options['tyros_custom_primary'] ) ? $tyros_options['tyros_custom_primary'] : '#00c4aa';
+        $colors_array['accent'] = isset( $tyros_options['tyros_custom_accent'] ) ? $tyros_options['tyros_custom_accent'] : '#009e8e';
 
     else :
 
