@@ -893,6 +893,10 @@ div#slicknav-menu-toggle i:hover {
     color: #fff;
 }
 
+ul.slicknav_nav > li:last-child > a {
+    margin-bottom: 0;
+}
+
 @media (max-width:991px) {
     
     ul#primary-menu {
@@ -919,7 +923,7 @@ ul.slicknav_nav ul.sub-menu {
 }
 
 ul.slicknav_nav {
-    padding: 15px 20px;
+    padding: 20px;
     text-align: left;
     background: #1c1c1c;
 }

@@ -232,7 +232,7 @@ function tyros_get_options() {
         'tyros_post_slider_cta_bool'            => 'yes',                                                                   // New
         'tyros_cta_header_two'                  => __( 'Tyros: Customizable, Professional, and Beautiful', 'tyros' ),
         'tyros_cta_button_text'                 => __( 'Learn More', 'tyros' ),
-        'tyros_cta_button_link'                 => '',
+        'tyros_cta_button_link'                 => '#',
         
         // CTA TRIO
         

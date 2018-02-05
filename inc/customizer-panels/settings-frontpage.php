@@ -69,7 +69,7 @@ $wp_customize->add_section( 'tyros_cta_header_section', array(
 
     // Button - URL
     $wp_customize->add_setting( 'tyros[tyros_cta_button_link]', array(
-        'default'               => '',
+        'default'               => '#',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'esc_url_raw',
         'type'                  => 'option'

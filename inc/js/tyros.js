@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    $('ul#primary-menu').slicknav({
+    $('div#primary-menu > ul, ul#primary-menu').slicknav({
         appendTo: '#site-branding-sticky-wrap',
         allowParentLinks: true,
     }); 
@@ -227,15 +227,15 @@ jQuery(document).ready(function ($) {
             $("div.slicknav_menu").stop().animate({
                 borderColor: "#fff"
             }, 500 );
-            $('ul#primary-menu').slicknav( 'toggle' );
+            $('div#primary-menu > ul, ul#primary-menu').slicknav( 'toggle' );
             slicknav_open = false;
             
         } else {
-            
+          
             $("div.slicknav_menu").stop().animate({
                 borderColor: "#cacaca"
             }, 1000 );
-            $('ul#primary-menu').slicknav( 'toggle' );
+            $('div#primary-menu > ul, ul#primary-menu').slicknav( 'toggle' );
             slicknav_open = true;
             
         }

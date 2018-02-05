@@ -61,7 +61,7 @@ function tyros_scripts() {
     $slider_array = array(
         'desktop_height'    => isset( $tyros_options['tyros_slider_height'] )     ? $tyros_options['tyros_slider_height']       : '42',
         'slide_timer'       => isset( $tyros_options['tyros_slider_time'] )       ? $tyros_options['tyros_slider_time']         : 4000, 
-        'animation'         => isset( $tyros_options['tyros_slider_fx'] )         ? $tyros_options['tyros_slider_fx']           : 'simpleFade',
+        'animation'         => isset( $tyros_options['sc_slider_fx'] )            ? $tyros_options['sc_slider_fx']           : 'simpleFade',
         'pagination'        => isset( $tyros_options['tyros_slider_pagination'] ) ? $tyros_options['tyros_slider_pagination']   : 'off',
         'navigation'        => isset( $tyros_options['tyros_slider_navigation'] ) ? $tyros_options['tyros_slider_navigation']   : 'on',
         'animation_speed'   => isset( $tyros_options['tyros_slider_trans_time'] ) ? $tyros_options['tyros_slider_trans_time']   : 2000,
@@ -265,7 +265,9 @@ function tyros_custom_css() {
 
         @media (min-width:992px) {
             #site-branding,
-            #site-navigation {
+            #site-navigation,
+            #site-branding-sticky-wrap-sticky-wrapper
+            {
                height: <?php echo intval( $tyros_options['tyros_branding_bar_height'] ); ?>px !important;
             }
             #site-branding img {
@@ -276,6 +278,22 @@ function tyros_custom_css() {
                 line-height: <?php echo intval( $tyros_options['tyros_branding_bar_height'] ); ?>px;
             }
         }
+        @media (max-width:991px) {
+            #site-branding,
+            #site-navigation,
+            #site-branding-sticky-wrap-sticky-wrapper
+            {
+               height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px !important;
+            }
+            #site-branding img {
+               max-height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px;
+            }
+            div#primary-menu > ul > li,
+            ul#primary-menu > li {
+                line-height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px;
+            }
+        }
+        
        
         /*
         ----- Theme Colors -----------------------------------------------------
