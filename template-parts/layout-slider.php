@@ -48,14 +48,14 @@
                                 
                                 <?php endif; ?>
                                 
-                                <?php if ( isset( $tyros_options['tyros_slide' . $ctr . '_button_url'] ) && $tyros_options['tyros_slide' . $ctr . '_button_url'] != '' && isset( $tyros_options['tyros_slide' . $ctr . '_button_label'] ) && $tyros_options['tyros_slide' . $ctr . '_button_label'] != '' ) : ?>
+                                <?php if ( isset( $tyros_options['tyros_slide' . $ctr . '_button_url'] ) && $tyros_options['tyros_slide' . $ctr . '_button_url'] != '' && isset( $tyros_options['tyros_slide' . $ctr . '_button_text'] ) && $tyros_options['tyros_slide' . $ctr . '_button_text'] != '' ) : ?>
 
                                     <div>
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <a href="<?php echo esc_url( $tyros_options['tyros_slide' . $ctr . '_button_url'] ); ?>" class="fadeInUp wow animated tyros-button">
-                                                        <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_button_label'] ); ?>
+                                                        <?php echo esc_html( $tyros_options['tyros_slide' . $ctr . '_button_text'] ); ?>
                                                     </a>
                                                 </div>
                                             </div>

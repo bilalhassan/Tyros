@@ -80,7 +80,7 @@ $wp_customize->add_section( 'tyros_fonts_section', array(
 
     // Primary Font Family
     $wp_customize->add_setting( 'tyros[tyros_font_family]', array(
-        'default'               => 'Montserrat, sans-serif',
+        'default'               => 'Josefin Sans, sans-serif',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'

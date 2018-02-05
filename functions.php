@@ -350,16 +350,16 @@ function tyros_migration_process() {
 
     if ( array_key_exists( 'tyros_font_family', $existing_tyros_options ) ) : 
 
-//        switch ( $existing_tyros_options['tyros_font_family'] ):
-//
-//            case 'MS Sans Serif, Geneva, sans-serif' :
-//                $existing_tyros_options['tyros_font_family'] = 'MS Sans Serif, Tahoma, sans-serif';
-//                break;
-//
-//            default :
-//                break;
-//
-//        endswitch;
+        switch ( $existing_tyros_options['tyros_font_family'] ):
+
+            case 'Lobster, cursive' :
+                $existing_tyros_options['tyros_font_family'] = 'Lobster Two, cursive';
+                break;
+
+            default :
+                break;
+
+        endswitch;
 
     endif;
 
