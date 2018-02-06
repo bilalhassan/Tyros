@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Avenue
+ * @package Tyros
  */
 
 $tyros_options = tyros_get_options(); 

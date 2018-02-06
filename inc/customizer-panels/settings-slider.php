@@ -66,7 +66,7 @@ for ( $ctr = 1; $ctr < apply_filters( 'tyros_capacity', 1 ); $ctr++ ) :
 
         // Slide - Caption Heading
         $wp_customize->add_setting( 'tyros[tyros_slide' . $ctr . '_text]', array(
-            'default'               => __( 'Welcome to Avenue', 'tyros' ),
+            'default'               => __( 'Welcome to Tyros', 'tyros' ),
             'transport'             => 'refresh',
             'sanitize_callback'     => 'sanitize_text_field',
             'type'                  => 'option'

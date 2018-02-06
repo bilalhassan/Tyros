@@ -582,7 +582,7 @@ function tyros_render_free_widget_areas() {
 /**
  * Render the Callout Banner.
  */
-add_action( 'tyros_callout_banner', 'tyros_render_callout_banner' );
+add_action( 'tyros_callout_banner', 'tyros_render_callout_banner', 10 );
 function tyros_render_callout_banner() {
     
     get_template_part('template-parts/layout', 'callout-banner' );
