@@ -176,14 +176,41 @@ ul#primary-menu > li > a {
 
 #site-branding div#primary-menu > ul ul.sub-menu,
 #site-branding ul#primary-menu ul.sub-menu {
-    background-color: #fff;
+    /* background-color: #fff;
     opacity: 0;
     transition: .3s all ease-in-out;
     -moz-transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
     text-align: left;
     padding: 15px 0;
-    display: none;
+    display: none; */
+    background-color: #fff;
+    opacity: 0;
+    height: 0;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    text-align: left;
+    padding: 15px 5px;
+    display: block !important;
+    overflow: hidden;
+}
+
+#site-branding div#primary-menu > ul > li.menu-item-has-children:hover > ul.sub-menu li,
+#site-branding ul#primary-menu > li.menu-item-has-children:hover > ul.sub-menu li {
+    max-width: 175px;
+}
+
+#site-branding div#primary-menu > ul li a,
+#site-branding ul#primary-menu > li a {
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+}
+
+#site-branding div#primary-menu > ul > li.menu-item-has-children:hover > ul.sub-menu li:hover a,
+#site-branding ul#primary-menu > li.menu-item-has-children:hover > ul.sub-menu li:hover a {
+    padding-left: 15px;
 }
 
 #site-branding div#primary-menu > ul > li.menu-item-has-children:hover > ul.sub-menu,
@@ -748,6 +775,7 @@ aside.widget ul {
     padding: 30px 15px 15px 15px;
 }
 
+.tyros-sidebar > aside#secondary > div,
 .tyros-sidebar aside.widget {
     overflow: hidden;
     background: rgb(255, 255, 255);
