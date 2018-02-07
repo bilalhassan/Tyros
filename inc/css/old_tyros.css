@@ -1017,7 +1017,7 @@ ul.social-icons li a:hover{
     text-transform: none;
 }
 .woocommerce .related ul li.product, .woocommerce .related ul.products li.product, .woocommerce .upsells.products ul li.product, .woocommerce .upsells.products ul.products li.product, .woocommerce-page .related ul li.product, .woocommerce-page .related ul.products li.product, .woocommerce-page .upsells.products ul li.product, .woocommerce-page .upsells.products ul.products li.product{
-    width: 32%;
+/*    width: 32%;*/
 }
 .woocommerce #content div.product p,
 .woocommerce #content div.product .product_meta{
