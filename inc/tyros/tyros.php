@@ -176,6 +176,17 @@ function tyros_widgets_init() {
         'after_title' => '</h2>',
     ));
 
+    // Shop Sidebar
+    register_sidebar(array(
+        'name' => __('Shop Sidebar', 'tyros'),
+        'id' => 'sidebar-shop',
+        'description' => '',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="col-sm-12">',
+        'after_widget' => '</div></aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+
     // Footer
     register_sidebar(array(
         'name' => __('Footer', 'tyros'),
@@ -255,7 +266,8 @@ function tyros_custom_css() {
         }
         
         div#masonry-blog-wrapper .post-category,
-        div#masonry-blog-wrapper .post-meta  {
+        div#masonry-blog-wrapper .post-meta,
+        body.single-team_member .sc_personal_quote span.sc_personal_quote_content {
             font-family: <?php echo esc_attr( $tyros_options['tyros_font_family_secondary'] ); ?>;
         }
         
@@ -331,6 +343,12 @@ function tyros_custom_css() {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         
+        .woocommerce-message::before,
+        .sc_personal_quote span.sc_team_icon-quote-left,
+        .sc_team_single_member .articles .article a {
+            color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
+        }
+        
         a.btn-primary,
         .btn-primary,
         .tyros-button,
@@ -345,18 +363,26 @@ function tyros_custom_css() {
         #homepage-area-b .top-banner-text,
         .woocommerce a.button.add_to_cart_button,
         .woocommerce button.single_add_to_cart_button,
+        .woocommerce a.button.product_type_simple,
+        .woocommerce button.product_type_simple,
         .widget.woocommerce a.button,
         .woocommerce-cart .woocommerce a.button,
         .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
         .woocommerce span.onsale, .woocommerce-page span.onsale,
         .wc-pagination ul span.page-numbers.current,
-        .pagination-links .page-numbers.current
+        .pagination-links .page-numbers.current,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-handle, .woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-range, .woocommerce-page .widget_price_filter .ui-slider .ui-slider-range,
+        .woocommerce #respond input#submit.alt.disabled, .woocommerce #respond input#submit.alt.disabled:hover, .woocommerce #respond input#submit.alt:disabled, .woocommerce #respond input#submit.alt:disabled:hover, .woocommerce #respond input#submit.alt:disabled[disabled], .woocommerce #respond input#submit.alt:disabled[disabled]:hover, .woocommerce a.button.alt.disabled, .woocommerce a.button.alt.disabled:hover, .woocommerce a.button.alt:disabled, .woocommerce a.button.alt:disabled:hover, .woocommerce a.button.alt:disabled[disabled], .woocommerce a.button.alt:disabled[disabled]:hover, .woocommerce button.button.alt.disabled, .woocommerce button.button.alt.disabled:hover, .woocommerce button.button.alt:disabled, .woocommerce button.button.alt:disabled:hover, .woocommerce button.button.alt:disabled[disabled], .woocommerce button.button.alt:disabled[disabled]:hover, .woocommerce input.button.alt.disabled, .woocommerce input.button.alt.disabled:hover, .woocommerce input.button.alt:disabled, .woocommerce input.button.alt:disabled:hover, .woocommerce input.button.alt:disabled[disabled], .woocommerce input.button.alt:disabled[disabled]:hover,
+        .sc_team_single_member .sc_team_single_skills .progress, .sc-tags .sc-single-tag
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         
         .woocommerce input[type="submit"].button,
-        .woocommerce a.checkout-button.button
+        .woocommerce a.checkout-button.button,
+        .woocommerce form input.submit,
+        .woocommerce-message a.button
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
@@ -365,6 +391,11 @@ function tyros_custom_css() {
         .scroll-top:hover,
         #site-cta .site-cta .fa.hover {
             border-color: <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        
+        .woocommerce-message,
+        .sc_team_single_member .articles .article {
+            border-color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         
         .site-branding .search-bar .search-field:focus {
@@ -399,6 +430,8 @@ function tyros_custom_css() {
         input[type="submit"]:hover,
         .woocommerce a.button.add_to_cart_button:hover,
         .woocommerce button.single_add_to_cart_button:hover,
+        .woocommerce a.button.product_type_simple:hover,
+        .woocommerce button.product_type_simple:hover,
         .widget.woocommerce a.button:hover,
         .woocommerce-cart .woocommerce a.button:hover,
         .woocommerce #respond input#submit.alt:hover, 
@@ -410,7 +443,9 @@ function tyros_custom_css() {
         }
         
         .woocommerce input[type="submit"].button:hover,
-        .woocommerce a.checkout-button.button:hover
+        .woocommerce a.checkout-button.button:hover,
+        .woocommerce form input.submit:hover,
+        .woocommerce-message a.button:hover
         {
             background: <?php echo esc_attr( $secondary_theme_color ); ?> !important;
         }

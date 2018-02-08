@@ -17,83 +17,69 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+    exit; // Exit if accessed directly
 }
 
 $tyros_options = tyros_get_options();
-
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 
-get_header( 'shop' ); 
-
-?>
-
-    <?php
-            /**
-             * woocommerce_before_main_content hook.
-             *
-             * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-             * @hooked woocommerce_breadcrumb - 20
-             */
-            do_action( 'woocommerce_before_main_content' );
-    ?>
-
-    <header class="woocommerce-products-header page-header">
-
-        <div class="col-md-12">
-            
-            <div class="inner just-bread">
-
-                <?php woocommerce_breadcrumb(); ?>
-            
-            </div>
-                
-        </div>
-    
-    </header>
-
-    <div class="col-md-<?php echo is_active_sidebar( 'sidebar-shop' ) && isset( $tyros_options['shop_sidebar_on_product'] ) && $tyros_options['shop_sidebar_on_product'] == 'on' ? '8' : '12'; ?>">
-        
-        <div id="tyros-shop-wrap">
-
-            <?php while ( have_posts() ) : the_post(); ?>
-
-                    <?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-            <?php endwhile; // end of the loop. ?>
-
-        </div>
-        
-    </div>
-        
-    <?php if ( is_active_sidebar( 'sidebar-shop' ) && isset( $tyros_options['shop_sidebar_on_product'] ) && $tyros_options['shop_sidebar_on_product'] == 'on' ) : ?>
-
-        <div class="col-md-4 tyros-sidebar">
-
-            <?php
-                /**
-                 * woocommerce_sidebar hook.
-                 *
-                 * @hooked woocommerce_get_sidebar - 10
-                 */
-                do_action( 'woocommerce_sidebar' );
-            ?>
-
-        </div>
-
-    <?php endif; ?>
+get_header( 'shop' ); ?>
 
     <?php
         /**
-         * woocommerce_after_main_content hook.
+         * woocommerce_before_main_content hook.
          *
-         * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+         * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+         * @hooked woocommerce_breadcrumb - 20
          */
-        do_action( 'woocommerce_after_main_content' );
+        do_action( 'woocommerce_before_main_content' );
     ?>
 
-<?php get_footer( 'shop' );
+    <header class="woocommerce-products-header page-header just-bread">
+
+        <div class="inner just-bread">
+
+            <?php woocommerce_breadcrumb(); ?>
+
+        </div>
+            
+        <div class="clear"></div>
+        
+    </header>
+
+    <div id="tyros-shop-wrap">
+
+        <?php while ( have_posts() ) : the_post(); ?>
+
+            <?php wc_get_template_part( 'content', 'single-product' ); ?>
+
+        <?php endwhile; // end of the loop. ?>
+
+    </div>
+
+</div>
+
+<?php if ( is_active_sidebar( 'sidebar-shop' ) && isset( $tyros_options['shop_sidebar_on_archive'] ) && $tyros_options['shop_sidebar_on_archive'] == 'on' ) : ?>
+
+    <div class="col-md-4 tyros-sidebar shop-sidebar">
+
+        <aside id="secondary" class="widget-area">
+        
+            <?php dynamic_sidebar( 'sidebar-shop' ); ?>
+
+        </aside>
+            
+    </div>
+
+<?php endif;
+
+/**
+ * woocommerce_after_main_content hook.
+ *
+ * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+ */
+do_action( 'woocommerce_after_main_content' );
+
+get_footer( 'shop' );
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
-
-

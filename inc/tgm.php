@@ -65,8 +65,8 @@ function tyros_register_required_plugins() {
                 'required'      => false,
             ),
             array (
-                'name'          => __( 'Smartcat Video & Image Slider', 'tyros' ),
-                'slug'          => 'smartcat-video-image-slider',
+                'name'          => __( 'uCare – Support Ticket System & HelpDesk', 'tyros' ),
+                'slug'          => 'ucare-support-system',
                 'required'      => false,
             ),
 
