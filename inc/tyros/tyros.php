@@ -332,7 +332,7 @@ function tyros_custom_css() {
         .nav-menu > li a:hover,
         .smartcat_team_member:hover h4,
         #site-navigation.main-navigation li a:hover,
-        #site-navigation.main-navigation li.current_page_item a,
+        #site-navigation.main-navigation li.current_page_item > a,
         #site-cta .site-cta .fa,
         .feature-grid .fa,
         header#masthead div#primary-menu > ul > li:hover > a,
@@ -345,7 +345,8 @@ function tyros_custom_css() {
         
         .woocommerce-message::before,
         .sc_personal_quote span.sc_team_icon-quote-left,
-        .sc_team_single_member .articles .article a {
+        .sc_team_single_member .articles .article a,
+        .woocommerce ins .amount {
             color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         
@@ -407,7 +408,7 @@ function tyros_custom_css() {
         }
                
         @media(max-width: 600px){
-            .nav-menu > li.current_page_item a{
+            .nav-menu > li.current_page_item > a{
                 color: <?php echo esc_attr( $primary_theme_color ); ?>;
             }      
         }
