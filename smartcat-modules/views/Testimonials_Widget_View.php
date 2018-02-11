@@ -44,7 +44,7 @@ $testimonials = wp_get_recent_posts($args); ?>
 
                 <div class="col-sm-12">
 
-                    <ul id="testimonials" class="owl-carousel owl-theme">
+                    <ul id="testimonials" class="owl-carousel">
 
                         <?php foreach( $testimonials as $testimonial ) : ?>
 
@@ -55,12 +55,6 @@ $testimonials = wp_get_recent_posts($args); ?>
                                     <div class="table-wrap">
 
                                         <div class="inner">
-
-                                            <?php if ( has_post_thumbnail( $testimonial ) ) : ?>
-
-                                                <img src="<?php echo esc_url( get_the_post_thumbnail_url( $testimonial, 'medium' ) ); ?>" alt="<?php echo $testimonial['post_title']; ?>">
-
-                                            <?php endif; ?>
 
                                             <?php if ( isset( $testimonial['post_title'] ) ) : ?>
 

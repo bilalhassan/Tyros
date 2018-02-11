@@ -524,6 +524,10 @@ div#post-slider-cta a.tyros-button:hover {
     padding-right: 15px;
 }
 
+#tyros-carousel-blog-wrap .owl-item {
+    padding: 0 7.5px !important;
+}
+
 #tyros-carousel-blog-wrap .item-post {
     border: 1px solid rgb(234, 234, 234);
 }
@@ -1459,4 +1463,27 @@ body.single-team_member .entry-content .skills-title {
 }
 body.single-team_member .entry-content .sc-team-member-posts .width75 a {
     font-size: 28px;
+}
+
+aside.widget_product_categories ul.product-categories li a {
+    color: #373737;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+}
+
+aside.widget_product_categories ul.product-categories > li.cat-parent ul.children li {
+    border-bottom: none;
+}
+
+aside.widget_product_categories ul li.cat-parent ul.children {
+    padding-left: 15px;
+}
+
+aside.widget_product_categories ul li.cat-parent ul.children li {
+    padding-bottom: 0;
+}
+
+aside.widget_product_categories ul.product-categories > li > a {
+    font-size: 22px;
 }

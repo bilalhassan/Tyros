@@ -44,8 +44,7 @@ function tyros_scripts() {
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'slicknav', get_template_directory_uri() . '/inc/css/slicknav.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'camera', get_template_directory_uri() . '/inc/css/camera.css', array(), TYROS_VERSION );
-    wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/css/owl.carousel.min.css', array(), TYROS_VERSION );
-    wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/inc/css/owl.theme.default.min.css', array(), TYROS_VERSION );
+    wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/css/owl.carousel.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'tyros-old-style', get_template_directory_uri() . '/inc/css/old_tyros.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'tyros-main-style', get_template_directory_uri() . '/inc/css/tyros.css', array(), TYROS_VERSION );
 
@@ -338,7 +337,8 @@ function tyros_custom_css() {
         header#masthead div#primary-menu > ul > li:hover > a,
         header#masthead ul#primary-menu > li:hover > a,
         .woocommerce .woocommerce-breadcrumb a,
-        .order-total .amount
+        .order-total .amount,
+        aside.widget_product_categories ul.product-categories li a:hover 
         {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }

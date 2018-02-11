@@ -57,29 +57,9 @@ jQuery(document).ready(function ($) {
 //    });
     
     $('#tyros-carousel-blog-wrap').owlCarousel({
-        margin:10,
-        loop:true,
-        responsiveClass:true,
-        responsive : {
-            0 : {
-                items: 1,
-                dots: true,
-                dotsEach: 1,
-                nav: false,
-            },
-            768 : {
-                items: 2,
-                dots: true,
-                nav: false,
-                dotsEach: 2,
-            },
-            992 : {
-                items: 4,
-                dots: true,
-                nav: false,
-                dotsEach: 4,
-            }
-        }
+        items: 4,
+        navigation: false,
+        pagination: false,
     });
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
