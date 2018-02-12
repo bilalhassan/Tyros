@@ -4,12 +4,12 @@ Contributors: smartcat
 Tags: two-columns, three-columns, right-sidebar, grid-layout, flexible-header, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, theme-options, translation-ready, blog, news, e-commerce
 
 Requires at least: 4.4
-Tested up to: 4.9.2
+Tested up to: 4.9.4
 Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Copyright 2018 Smartcat
+Copyright 2018 - Smartcat Solutions Inc
 
 == Description ==
 
