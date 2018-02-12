@@ -20,7 +20,7 @@ $wp_customize->add_section( 'static_front_page', array(
 // ---------------------------------------------
 $wp_customize->add_section( 'tyros_cta_header_section', array(
     'title'                 => __( 'Callout Banner', 'tyros'),
-    'description'           => __( 'Customize the CTA banner that appears below the Slider', 'tyros' ),
+    'description'           => __( 'Customize the CTA banner that appears between the Slider and CTA Trio', 'tyros' ),
     'panel'                 => 'tyros_frontpage_panel'
 ) );
 
@@ -32,7 +32,7 @@ $wp_customize->add_section( 'tyros_cta_header_section', array(
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'tyros[tyros_post_slider_cta_bool]', array(
-        'label'   => __( 'Show or hide the Callout Banner below the Slider?', 'tyros' ),
+        'label'   => __( 'Show or hide the Callout Banner?', 'tyros' ),
         'section' => 'tyros_cta_header_section',
         'type'    => 'radio',
         'choices'    => array(
@@ -69,7 +69,7 @@ $wp_customize->add_section( 'tyros_cta_header_section', array(
 
     // Button - URL
     $wp_customize->add_setting( 'tyros[tyros_cta_button_link]', array(
-        'default'               => '',
+        'default'               => '#',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'esc_url_raw',
         'type'                  => 'option'

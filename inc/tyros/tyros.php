@@ -44,8 +44,7 @@ function tyros_scripts() {
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'slicknav', get_template_directory_uri() . '/inc/css/slicknav.min.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'camera', get_template_directory_uri() . '/inc/css/camera.css', array(), TYROS_VERSION );
-    wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/css/owl.carousel.min.css', array(), TYROS_VERSION );
-    wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/inc/css/owl.theme.default.min.css', array(), TYROS_VERSION );
+    wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/css/owl.carousel.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'tyros-old-style', get_template_directory_uri() . '/inc/css/old_tyros.css', array(), TYROS_VERSION );
     wp_enqueue_style( 'tyros-main-style', get_template_directory_uri() . '/inc/css/tyros.css', array(), TYROS_VERSION );
 
@@ -61,7 +60,7 @@ function tyros_scripts() {
     $slider_array = array(
         'desktop_height'    => isset( $tyros_options['tyros_slider_height'] )     ? $tyros_options['tyros_slider_height']       : '42',
         'slide_timer'       => isset( $tyros_options['tyros_slider_time'] )       ? $tyros_options['tyros_slider_time']         : 4000, 
-        'animation'         => isset( $tyros_options['tyros_slider_fx'] )         ? $tyros_options['tyros_slider_fx']           : 'simpleFade',
+        'animation'         => isset( $tyros_options['sc_slider_fx'] )            ? $tyros_options['sc_slider_fx']           : 'simpleFade',
         'pagination'        => isset( $tyros_options['tyros_slider_pagination'] ) ? $tyros_options['tyros_slider_pagination']   : 'off',
         'navigation'        => isset( $tyros_options['tyros_slider_navigation'] ) ? $tyros_options['tyros_slider_navigation']   : 'on',
         'animation_speed'   => isset( $tyros_options['tyros_slider_trans_time'] ) ? $tyros_options['tyros_slider_trans_time']   : 2000,
@@ -176,6 +175,17 @@ function tyros_widgets_init() {
         'after_title' => '</h2>',
     ));
 
+    // Shop Sidebar
+    register_sidebar(array(
+        'name' => __('Shop Sidebar', 'tyros'),
+        'id' => 'sidebar-shop',
+        'description' => '',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="col-sm-12">',
+        'after_widget' => '</div></aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+
     // Footer
     register_sidebar(array(
         'name' => __('Footer', 'tyros'),
@@ -255,7 +265,8 @@ function tyros_custom_css() {
         }
         
         div#masonry-blog-wrapper .post-category,
-        div#masonry-blog-wrapper .post-meta  {
+        div#masonry-blog-wrapper .post-meta,
+        body.single-team_member .sc_personal_quote span.sc_personal_quote_content {
             font-family: <?php echo esc_attr( $tyros_options['tyros_font_family_secondary'] ); ?>;
         }
         
@@ -265,7 +276,9 @@ function tyros_custom_css() {
 
         @media (min-width:992px) {
             #site-branding,
-            #site-navigation {
+            #site-navigation,
+            #site-branding-sticky-wrap-sticky-wrapper
+            {
                height: <?php echo intval( $tyros_options['tyros_branding_bar_height'] ); ?>px !important;
             }
             #site-branding img {
@@ -276,6 +289,22 @@ function tyros_custom_css() {
                 line-height: <?php echo intval( $tyros_options['tyros_branding_bar_height'] ); ?>px;
             }
         }
+        @media (max-width:991px) {
+            #site-branding,
+            #site-navigation,
+            #site-branding-sticky-wrap-sticky-wrapper
+            {
+               height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px !important;
+            }
+            #site-branding img {
+               max-height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px;
+            }
+            div#primary-menu > ul > li,
+            ul#primary-menu > li {
+                line-height: <?php echo intval( $tyros_options['tyros_branding_bar_height_mobile'] ); ?>px;
+            }
+        }
+        
        
         /*
         ----- Theme Colors -----------------------------------------------------
@@ -302,15 +331,23 @@ function tyros_custom_css() {
         .nav-menu > li a:hover,
         .smartcat_team_member:hover h4,
         #site-navigation.main-navigation li a:hover,
-        #site-navigation.main-navigation li.current_page_item a,
+        #site-navigation.main-navigation li.current_page_item > a,
         #site-cta .site-cta .fa,
         .feature-grid .fa,
         header#masthead div#primary-menu > ul > li:hover > a,
         header#masthead ul#primary-menu > li:hover > a,
         .woocommerce .woocommerce-breadcrumb a,
-        .order-total .amount
+        .order-total .amount,
+        aside.widget_product_categories ul.product-categories li a:hover 
         {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        
+        .woocommerce-message::before,
+        .sc_personal_quote span.sc_team_icon-quote-left,
+        .sc_team_single_member .articles .article a,
+        .woocommerce ins .amount {
+            color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         
         a.btn-primary,
@@ -327,18 +364,26 @@ function tyros_custom_css() {
         #homepage-area-b .top-banner-text,
         .woocommerce a.button.add_to_cart_button,
         .woocommerce button.single_add_to_cart_button,
+        .woocommerce a.button.product_type_simple,
+        .woocommerce button.product_type_simple,
         .widget.woocommerce a.button,
         .woocommerce-cart .woocommerce a.button,
         .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
         .woocommerce span.onsale, .woocommerce-page span.onsale,
         .wc-pagination ul span.page-numbers.current,
-        .pagination-links .page-numbers.current
+        .pagination-links .page-numbers.current,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-handle, .woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-range, .woocommerce-page .widget_price_filter .ui-slider .ui-slider-range,
+        .woocommerce #respond input#submit.alt.disabled, .woocommerce #respond input#submit.alt.disabled:hover, .woocommerce #respond input#submit.alt:disabled, .woocommerce #respond input#submit.alt:disabled:hover, .woocommerce #respond input#submit.alt:disabled[disabled], .woocommerce #respond input#submit.alt:disabled[disabled]:hover, .woocommerce a.button.alt.disabled, .woocommerce a.button.alt.disabled:hover, .woocommerce a.button.alt:disabled, .woocommerce a.button.alt:disabled:hover, .woocommerce a.button.alt:disabled[disabled], .woocommerce a.button.alt:disabled[disabled]:hover, .woocommerce button.button.alt.disabled, .woocommerce button.button.alt.disabled:hover, .woocommerce button.button.alt:disabled, .woocommerce button.button.alt:disabled:hover, .woocommerce button.button.alt:disabled[disabled], .woocommerce button.button.alt:disabled[disabled]:hover, .woocommerce input.button.alt.disabled, .woocommerce input.button.alt.disabled:hover, .woocommerce input.button.alt:disabled, .woocommerce input.button.alt:disabled:hover, .woocommerce input.button.alt:disabled[disabled], .woocommerce input.button.alt:disabled[disabled]:hover,
+        .sc_team_single_member .sc_team_single_skills .progress, .sc-tags .sc-single-tag
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         
         .woocommerce input[type="submit"].button,
-        .woocommerce a.checkout-button.button
+        .woocommerce a.checkout-button.button,
+        .woocommerce form input.submit,
+        .woocommerce-message a.button
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
@@ -347,6 +392,11 @@ function tyros_custom_css() {
         .scroll-top:hover,
         #site-cta .site-cta .fa.hover {
             border-color: <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        
+        .woocommerce-message,
+        .sc_team_single_member .articles .article {
+            border-color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         
         .site-branding .search-bar .search-field:focus {
@@ -358,7 +408,7 @@ function tyros_custom_css() {
         }
                
         @media(max-width: 600px){
-            .nav-menu > li.current_page_item a{
+            .nav-menu > li.current_page_item > a{
                 color: <?php echo esc_attr( $primary_theme_color ); ?>;
             }      
         }
@@ -381,6 +431,8 @@ function tyros_custom_css() {
         input[type="submit"]:hover,
         .woocommerce a.button.add_to_cart_button:hover,
         .woocommerce button.single_add_to_cart_button:hover,
+        .woocommerce a.button.product_type_simple:hover,
+        .woocommerce button.product_type_simple:hover,
         .widget.woocommerce a.button:hover,
         .woocommerce-cart .woocommerce a.button:hover,
         .woocommerce #respond input#submit.alt:hover, 
@@ -392,7 +444,9 @@ function tyros_custom_css() {
         }
         
         .woocommerce input[type="submit"].button:hover,
-        .woocommerce a.checkout-button.button:hover
+        .woocommerce a.checkout-button.button:hover,
+        .woocommerce form input.submit:hover,
+        .woocommerce-message a.button:hover
         {
             background: <?php echo esc_attr( $secondary_theme_color ); ?> !important;
         }
@@ -564,7 +618,7 @@ function tyros_render_free_widget_areas() {
 /**
  * Render the Callout Banner.
  */
-add_action( 'tyros_callout_banner', 'tyros_render_callout_banner' );
+add_action( 'tyros_callout_banner', 'tyros_render_callout_banner', 10 );
 function tyros_render_callout_banner() {
     
     get_template_part('template-parts/layout', 'callout-banner' );

@@ -23,7 +23,7 @@ get_header(); ?>
     
             <?php while ( have_posts() ) : the_post(); ?>
     
-                <?php if ( $above_sidebar == 'on' && is_active_sidebar( 'sidebar-above-post' ) ) : ?>
+                <?php if ( $above_sidebar == 'on' && is_active_sidebar( 'sidebar-above-page' ) ) : ?>
 
                     <div class="row">
                         
@@ -59,7 +59,7 @@ get_header(); ?>
 
                 </div>
                     
-                <?php if ( $below_sidebar == 'on' && is_active_sidebar( 'sidebar-below-post' ) ) : ?>
+                <?php if ( $below_sidebar == 'on' && is_active_sidebar( 'sidebar-below-page' ) ) : ?>
 
                     <div class="row">
                         

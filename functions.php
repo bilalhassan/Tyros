@@ -164,7 +164,8 @@ function tyros_get_options() {
         
         // HEADER
         
-//        'tyros_branding_bar_height'        => 80,                                                      // New
+        'tyros_branding_bar_height'             => 80,                                                      // New
+        'tyros_branding_bar_height_mobile'      => 80,                                                      // New
         
         // SOCIAL
         
@@ -226,13 +227,18 @@ function tyros_get_options() {
         'tyros_slide2_text2'                    => __( 'A professional, multi-purpose WordPress theme', 'tyros' ),
         'tyros_slide2_button_text'              => __( 'Click Here', 'tyros' ),
         'tyros_slide2_button_url'               => '',
+        
+        'tyros_slide3_image'                    => '',                                                                      // New
+        'tyros_slide4_image'                    => '',                                                                      // New
+        'tyros_slide5_image'                    => '',                                                                      // New
+        'tyros_slide6_image'                    => '',                                                                      // New
 
         // CALLOUT BANNER
         
         'tyros_post_slider_cta_bool'            => 'yes',                                                                   // New
         'tyros_cta_header_two'                  => __( 'Tyros: Customizable, Professional, and Beautiful', 'tyros' ),
         'tyros_cta_button_text'                 => __( 'Learn More', 'tyros' ),
-        'tyros_cta_button_link'                 => '',
+        'tyros_cta_button_link'                 => '#',
         
         // CTA TRIO
         
@@ -304,6 +310,10 @@ function tyros_migration_process() {
     if ( ! array_key_exists( 'tyros_branding_bar_height', $existing_tyros_options ) ) :
         $existing_tyros_options['tyros_branding_bar_height'] = 80;
     endif; 
+    
+    if ( ! array_key_exists( 'tyros_branding_bar_height_mobile', $existing_tyros_options ) ) :
+        $existing_tyros_options['tyros_branding_bar_height_mobile'] = 80;
+    endif; 
 
     if ( ! array_key_exists( 'tyros_instagram_url', $existing_tyros_options ) ) :
         $existing_tyros_options['tyros_instagram_url'] = '';
@@ -316,7 +326,23 @@ function tyros_migration_process() {
     if ( ! array_key_exists( 'tyros_pinterest_url', $existing_tyros_options ) ) :
         $existing_tyros_options['tyros_pinterest_url'] = '';
     endif; 
-
+    
+    if ( ! array_key_exists( 'tyros_slide3_image', $existing_tyros_options ) ) :
+        $existing_tyros_options['tyros_slide3_image'] = '';
+    endif; 
+    
+    if ( ! array_key_exists( 'tyros_slide4_image', $existing_tyros_options ) ) :
+        $existing_tyros_options['tyros_slide4_image'] = '';
+    endif; 
+    
+    if ( ! array_key_exists( 'tyros_slide5_image', $existing_tyros_options ) ) :
+        $existing_tyros_options['tyros_slide5_image'] = '';
+    endif; 
+    
+    if ( ! array_key_exists( 'tyros_slide6_image', $existing_tyros_options ) ) :
+        $existing_tyros_options['tyros_slide6_image'] = '';
+    endif; 
+    
     if ( array_key_exists( 'tyros_font_size', $existing_tyros_options ) ) : 
 
         switch ( $existing_tyros_options['tyros_font_size'] ):
@@ -350,16 +376,16 @@ function tyros_migration_process() {
 
     if ( array_key_exists( 'tyros_font_family', $existing_tyros_options ) ) : 
 
-//        switch ( $existing_tyros_options['tyros_font_family'] ):
-//
-//            case 'MS Sans Serif, Geneva, sans-serif' :
-//                $existing_tyros_options['tyros_font_family'] = 'MS Sans Serif, Tahoma, sans-serif';
-//                break;
-//
-//            default :
-//                break;
-//
-//        endswitch;
+        switch ( $existing_tyros_options['tyros_font_family'] ):
+
+            case 'Lobster, cursive' :
+                $existing_tyros_options['tyros_font_family'] = 'Lobster Two, cursive';
+                break;
+
+            default :
+                break;
+
+        endswitch;
 
     endif;
 

@@ -13,16 +13,21 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     3.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$template = get_option( 'template' );
+$template = wc_get_theme_slug_for_templates();
+$tyros_options = tyros_get_options();
+$sidebar_option_width = is_active_sidebar( 'sidebar-shop' ) && isset( $tyros_options['shop_sidebar_on_archive'] ) && $tyros_options['shop_sidebar_on_archive'] == 'on' ? '8' : '12';
 
 switch ( $template ) {
+	case 'twentyten' :
+		echo '<div id="container"><div id="content" role="main">';
+		break;
 	case 'twentyeleven' :
 		echo '<div id="primary"><div id="content" role="main" class="twentyeleven">';
 		break;
@@ -42,6 +47,6 @@ switch ( $template ) {
 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
 		break;
 	default :
-		echo '<div class="container"><div class="row">';
+		echo '<div class="container"><div class="row"><div class="col-md-' . $sidebar_option_width . ' boxed-wrap">';
 		break;
 }

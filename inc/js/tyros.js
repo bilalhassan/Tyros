@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    $('ul#primary-menu').slicknav({
+    $('div#primary-menu > ul, ul#primary-menu').slicknav({
         appendTo: '#site-branding-sticky-wrap',
         allowParentLinks: true,
     }); 
@@ -57,29 +57,12 @@ jQuery(document).ready(function ($) {
 //    });
     
     $('#tyros-carousel-blog-wrap').owlCarousel({
-        margin:10,
-        loop:true,
-        responsiveClass:true,
-        responsive : {
-            0 : {
-                items: 1,
-                dots: true,
-                dotsEach: 1,
-                nav: false,
-            },
-            768 : {
-                items: 2,
-                dots: true,
-                nav: false,
-                dotsEach: 2,
-            },
-            992 : {
-                items: 4,
-                dots: true,
-                nav: false,
-                dotsEach: 4,
-            }
-        }
+        items: 4,
+        navigation: false,
+        pagination: false,
+        slideSpeed : 1000,
+        paginationSpeed : 1000,
+        autoPlay : 6000
     });
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
@@ -227,15 +210,15 @@ jQuery(document).ready(function ($) {
             $("div.slicknav_menu").stop().animate({
                 borderColor: "#fff"
             }, 500 );
-            $('ul#primary-menu').slicknav( 'toggle' );
+            $('div#primary-menu > ul, ul#primary-menu').slicknav( 'toggle' );
             slicknav_open = false;
             
         } else {
-            
+          
             $("div.slicknav_menu").stop().animate({
                 borderColor: "#cacaca"
             }, 1000 );
-            $('ul#primary-menu').slicknav( 'toggle' );
+            $('div#primary-menu > ul, ul#primary-menu').slicknav( 'toggle' );
             slicknav_open = true;
             
         }

@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Avenue
+ * @package Tyros
  */
 
 $tyros_options = tyros_get_options(); 
@@ -95,7 +95,7 @@ $tyros_options = tyros_get_options();
                                     
                                     <div id="slicknav-menu-toggle">
 
-                                        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/menu-bars-sqr.png' ); ?>"
+                                        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/menu-bars-sqr.png' ); ?>">
 
                                     </div>
 

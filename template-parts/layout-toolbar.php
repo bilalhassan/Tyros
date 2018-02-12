@@ -4,15 +4,27 @@
 
     <div class="social-bar col-sm-6">
 
-        <?php if ( isset( $tyros_options['tyros_pinterest_url'] ) && $tyros_options['tyros_pinterest_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_pinterest_url'] ); ?>" target="_blank" class="icon-pinterest">
-                <i class="fa fa-pinterest"></i>                            
+        <?php if ( isset( $tyros_options['tyros_facebook_url'] ) && $tyros_options['tyros_facebook_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_facebook_url'] ); ?>" target="_blank" class="icon-facebook">
+                <i class="fa fa-facebook"></i>
             </a>
         <?php endif; ?>
-
-        <?php if ( isset( $tyros_options['tyros_youtube_url'] ) && $tyros_options['tyros_youtube_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_youtube_url'] ); ?>" target="_blank" class="icon-youtube">
-                <i class="fa fa-youtube"></i>                            
+        
+        <?php if ( isset( $tyros_options['tyros_twitter_url'] ) && $tyros_options['tyros_twitter_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_twitter_url'] ); ?>" target="_blank" class="icon-twitter">
+                <i class="fa fa-twitter"></i>                            
+            </a>
+        <?php endif; ?>
+        
+        <?php if ( isset( $tyros_options['tyros_linkedin_url'] ) && $tyros_options['tyros_linkedin_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_linkedin_url'] ); ?>" target="_blank" class="icon-linkedin">
+                <i class="fa fa-linkedin"></i>                            
+            </a>
+        <?php endif; ?>
+        
+        <?php if ( isset( $tyros_options['tyros_gplus_url'] ) && $tyros_options['tyros_gplus_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_gplus_url'] ); ?>" target="_blank" class="icon-gplus">
+                <i class="fa fa-google-plus"></i>                            
             </a>
         <?php endif; ?>
 
@@ -21,30 +33,29 @@
                 <i class="fa fa-instagram"></i>                            
             </a>
         <?php endif; ?>
-
-        <?php if ( isset( $tyros_options['tyros_gplus_url'] ) && $tyros_options['tyros_gplus_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_gplus_url'] ); ?>" target="_blank" class="icon-gplus">
-                <i class="fa fa-google-plus"></i>                            
+        
+        <?php if ( isset( $tyros_options['tyros_youtube_url'] ) && $tyros_options['tyros_youtube_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_youtube_url'] ); ?>" target="_blank" class="icon-youtube">
+                <i class="fa fa-youtube"></i>                            
+            </a>
+        <?php endif; ?>
+        
+        <?php if ( isset( $tyros_options['tyros_pinterest_url'] ) && $tyros_options['tyros_pinterest_url'] != '' ) : ?>
+            <a href="<?php echo esc_url( $tyros_options['tyros_pinterest_url'] ); ?>" target="_blank" class="icon-pinterest">
+                <i class="fa fa-pinterest"></i>                            
             </a>
         <?php endif; ?>
 
-        <?php if ( isset( $tyros_options['tyros_linkedin_url'] ) && $tyros_options['tyros_linkedin_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_linkedin_url'] ); ?>" target="_blank" class="icon-linkedin">
-                <i class="fa fa-linkedin"></i>                            
-            </a>
-        <?php endif; ?>
 
-        <?php if ( isset( $tyros_options['tyros_twitter_url'] ) && $tyros_options['tyros_twitter_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_twitter_url'] ); ?>" target="_blank" class="icon-twitter">
-                <i class="fa fa-twitter"></i>                            
-            </a>
-        <?php endif; ?>
+        
 
-        <?php if ( isset( $tyros_options['tyros_facebook_url'] ) && $tyros_options['tyros_facebook_url'] != '' ) : ?>
-            <a href="<?php echo esc_url( $tyros_options['tyros_facebook_url'] ); ?>" target="_blank" class="icon-facebook">
-                <i class="fa fa-facebook"></i>
-            </a>
-        <?php endif; ?>
+
+
+
+
+
+
+ 
 
     </div>
 
