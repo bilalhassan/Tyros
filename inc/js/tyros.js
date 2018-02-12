@@ -60,6 +60,9 @@ jQuery(document).ready(function ($) {
         items: 4,
         navigation: false,
         pagination: false,
+        slideSpeed : 1000,
+        paginationSpeed : 1000,
+        autoPlay : 6000
     });
     
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯

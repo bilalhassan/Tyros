@@ -73,7 +73,7 @@ Tyros uses various open source libraries, fonts, images, and icons as listed bel
     - License               SIL Open Font
     - License URL           http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 
-7. Slider Image & Screenshot Image
+7. Slider Image
     - URL                   https://pixabay.com/en/skyscraper-city-architecture-office-3128906/
     - License               CC0
     - License URL           http://creativecommons.org/publicdomain/zero/1.0/deed.en
@@ -103,3 +103,17 @@ Tyros uses various open source libraries, fonts, images, and icons as listed bel
     - URL                   https://github.com/garand/sticky/blob/master/LICENSE.md
     - License               MIT
     - License URL           http://www.opensource.org/licenses/mit-license.php
+
+13. Screenshot Images
+    - URL                   https://pixabay.com/en/skyscraper-city-architecture-office-3128906/
+                            https://pixabay.com/en/business-document-paper-office-3141342/
+                            https://pixabay.com/en/apple-imac-ipad-workplace-606761/
+                            https://pixabay.com/en/workplace-team-business-meeting-1245776/
+                            https://pixabay.com/en/paper-business-finance-document-3139127/
+    - License               CC0
+    - License URL           http://creativecommons.org/publicdomain/zero/1.0/deed.en
+    - Photographer          hitamsejuk
+                            rawpixel
+                            FirmBee
+                            Free-Photos
+                            rawpixel
