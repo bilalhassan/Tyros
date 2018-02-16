@@ -10,7 +10,7 @@
 if ( ! function_exists( 'tyros_setup' ) ) :
     
     if( !defined( 'TYROS_VERSION' ) ) :
-        define( 'TYROS_VERSION', '2.0.0' );
+        define( 'TYROS_VERSION', '2.0.1' );
     endif;
     
     /**
@@ -393,3 +393,10 @@ function tyros_migration_process() {
     update_option( 'tyros_migration_process', 'completed' );
     
 }
+
+$strap_check = function_exists( 'tyros_strap_pl' ) && tyros_strap_pl() ? true : false;
+
+if( ! $strap_check ) {
+    require_once( trailingslashit( get_template_directory() ) . 'trt-customize-pro/example-1/class-customize.php' );    
+}
+
