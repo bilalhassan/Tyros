@@ -35,6 +35,9 @@ This theme supports Our Team Showcase and uCare (Support Ticket System & HelpDes
 = 2.0.0 - February 8th, 2018 =
 - Major overhaul of code-base to migrate theme options to Customizer mods
 
+= 2.0.1 - February 16th, 2018 =
+- Added Pro Version link in Customizer
+
 == Credits ==
 
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
